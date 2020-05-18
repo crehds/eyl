@@ -1,0 +1,17 @@
+.main-container3 {
+  display:grid;
+  grid-template-columns: auto 8px;
+  grid-gap: 3px;
+}
+
+.div-container-profesor {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 4px;
+  padding:4px;
+  /* width: 500px; */
+}
+.div-profesor {
+  border: 1px solid red;
+}

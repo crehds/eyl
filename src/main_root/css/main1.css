@@ -1,0 +1,44 @@
+.main1 {
+  border: 1px brown solid;
+  background: url('../../assets/imageseymreact/Poster_Casting2.jpg');
+  height: 100%;
+  max-width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  /* background-attachment: scroll; */
+}
+
+.main1:hover {
+  background: url('../../assets/imageseymreact/Poster_Casting2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  animation-name: opacidad;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes opacidad{
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: .0;
+  }
+  20% {
+    opacity: .25;
+  }
+  30% {
+    opacity: .45;
+  }
+  45% {
+    opacity: .65;
+  }
+  70% {
+    opacity: .85;
+  }
+  100% {
+    opacity: .1;
+  }
+}

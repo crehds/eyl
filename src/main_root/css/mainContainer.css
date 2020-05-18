@@ -1,0 +1,19 @@
+.main-container {
+  margin: 0;
+  padding: 0;
+}
+
+.main-container2 {
+  display: grid;
+  grid-template-rows: 20px auto;
+  align-content: center;
+  justify-content: center;
+  grid-gap: 10px;
+  text-align: center;
+}
+
+.main-container3 {
+  display:grid;
+  grid-template-columns: auto 8px;
+  grid-gap: 3px;
+}
