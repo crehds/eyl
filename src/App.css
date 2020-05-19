@@ -1,7 +1,7 @@
 .App {
   /* text-align: center; */
   border: 1px solid red;
-  background-color: rgb(5,8,13);
+  background-color: rgba(7, 11, 19, 0.966);
   min-height: 100vh;
   color:white;
   display: grid;
