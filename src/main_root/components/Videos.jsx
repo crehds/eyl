@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import '../css/main3.css';
+import '../css/videos.css';
 
-export default class Main3 extends Component {
+export default class Videos extends Component {
   render() {
     return (
       <React.Fragment>

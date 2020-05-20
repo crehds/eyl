@@ -1,8 +1,8 @@
-.main-container3 {
+/* .main-container2 {
   display:grid;
   grid-template-columns: auto 8px;
   grid-gap: 3px;
-}
+} */
 
 .div-container-profesor {
   display: grid;
@@ -10,6 +10,7 @@
   grid-template-rows: 1fr 1fr;
   grid-gap: 4px;
   padding:4px;
+  position: relative;
   /* width: 500px; */
 }
 .div-profesor {

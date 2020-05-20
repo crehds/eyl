@@ -1,17 +1,38 @@
 import React, { Component } from 'react'
-import '../css/main2.css';
+import '../css/profesores.css';
+import ProfileProfesor from './ProfileProfesor';
 
-export default class Main2 extends Component {
+export default class Profesores extends Component {
+
+  state = {
+    profile: false,
+  }
+
+  showProfile = () => {
+    if (this.state.profile){
+      return this.setState({
+        profile: false
+      })
+    } else {
+      return this.setState({
+        profile: true
+      })
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
         <div className="div-container-profesor">
-          <div className="div-profesor">Pr. 1</div>
-          <div className="div-profesor">Pr. 2</div>
-          <div className="div-profesor">Pr. 3</div>
-          <div className="div-profesor">Pr. 4</div>
+          <div className="div-profesor" onClick={this.showProfile}>Pr. 1</div>
+          <div className="div-profesor" onClick={this.showProfile}>Pr. 2</div>
+          <div className="div-profesor" onClick={this.showProfile}>Pr. 3</div>
+          <div className="div-profesor" onClick={this.showProfile}>Pr. 4</div>
         </div>
-        
+        {
+          this.state.profile &&
+          <ProfileProfesor/>
+        }
         <div>
           <div>F</div>
         </div>

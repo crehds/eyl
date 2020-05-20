@@ -1,9 +1,15 @@
-.main-container {
+.inicio {
   margin: 0;
   padding: 0;
 }
 
-.main-container2 {
+.profesores {
+  display:grid;
+  grid-template-columns: auto 8px;
+  grid-gap: 3px;
+}
+
+.videos {
   display: grid;
   grid-template-rows: 20px auto;
   align-content: center;
@@ -12,8 +18,3 @@
   text-align: center;
 }
 
-.main-container3 {
-  display:grid;
-  grid-template-columns: auto 8px;
-  grid-gap: 3px;
-}

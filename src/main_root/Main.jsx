@@ -5,9 +5,9 @@ import Profesores from './components/Profesores.jsx';
 import Videos from './components/Videos.jsx';
 
 let dictionaryContent = {
-  "Inicio": "main-container",
-  "Profesores": "main-container3",
-  "Videos": "main-container2"
+  "Inicio": "inicio",
+  "Profesores": "profesores",
+  "Videos": "videos"
 }
 
 function showContent (content) {
@@ -29,4 +29,3 @@ export default function Main(props) {
     </main>
   );
 }
-

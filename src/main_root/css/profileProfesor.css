@@ -1,0 +1,22 @@
+.profile-profesor {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 7fr;
+  z-index: 3;
+  width: 100%;
+  background-color: bisque;
+  top: 20%;
+  height: 60%;
+}
+
+.profile-title {
+  grid-column: 1 / 3;
+}
+
+.prueba {
+  border: 1px solid red;
+}
+.prueba2 {
+  border: 1px solid red;
+}

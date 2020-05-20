@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import '../css/main1.css'
+import '../css/inicio.css'
 
-export default class Main1 extends Component {
+export default class Inico extends Component {
   render() {
     return (
       <div className="main1">       
