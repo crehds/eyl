@@ -31,7 +31,9 @@ export default class Profesores extends Component {
         </div>
         {
           this.state.profile &&
-          <ProfileProfesor/>
+          <ProfileProfesor
+            showProfile = {this.showProfile}
+          />
         }
         <div>
           <div>F</div>
