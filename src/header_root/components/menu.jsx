@@ -8,16 +8,26 @@ class Menu extends Component {
     return this.props.handleContent(event.target.id);
   };
 
-  handleIsMenuActive = (event) => {
-    let hamburguerClass = event.target.classList;
+  handleIsMenuActive = () => {
+    let hamburguerClass = document.getElementById("hamburguer").classList;
     let menuClass = document.getElementById("menu").classList;
 
+    // TODO: Optimized
     if (hamburguerClass.contains("is-active")) {
       hamburguerClass.remove("is-active");
       menuClass.remove("is-active");
+      document.removeEventListener("click", this.removeListener);
     } else {
       hamburguerClass.add("is-active");
       menuClass.add("is-active");
+      document.addEventListener("click", this.removeListener);
+    }
+  };
+
+  removeListener = (event) => {
+    let template = document.getElementById("menu").contains(event.target);
+    if (!template) {
+      this.handleIsMenuActive();
     }
   };
 
