@@ -19,6 +19,7 @@
   display:flex;
   justify-content: center;
   align-items: center;
+}
 .menu.is-active {
   right: 0;
   transition: .5s;

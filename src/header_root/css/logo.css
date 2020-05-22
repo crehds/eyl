@@ -1,6 +1,6 @@
 .logo-container {
   display:flex;
-  border: 1px solid lightblue;
+  /* border: 1px solid lightblue; */
 }
 .logo-container img{
   width: 100%;
