@@ -10,10 +10,10 @@ export default function Options(props) {
       <li id="Profesores" onClick={props.sendContent}>
         Profesores
       </li>
-      <li id="Videos" onClick={props.sendContent}>
+      <li id="Clases" onClick={props.sendContent}>
         Videos
       </li>
-      <li id="Contact" onClick={props.sendContent}>
+      <li id="Contacto" onClick={props.sendContent}>
         Encuentranos
       </li>
       <li>Opción N</li>

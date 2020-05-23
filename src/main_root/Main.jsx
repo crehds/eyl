@@ -1,35 +1,26 @@
 import React from "react";
 import "./css/mainContainer.css";
-import Inicio from './components/Inicio.jsx';
-import Profesores from './components/Profesores.jsx';
-import Videos from './components/Videos.jsx';
-import Contact from './components/Contact';
+import Inicio from "./components/inicio_root/Inicio";
+import Profesores from "./components/profesores_root/Profesores";
+import Clases from "./components/clases_root/Clases";
+import Contacto from "./components/contacto_root/Contacto";
+import MainContainer from "./container/MainContainer";
 
-let dictionaryContent = {
-  "Inicio": "inicio",
-  "Profesores": "profesores",
-  "Videos": "videos",
-  "Contact":"contacto"
-}
-
-function showContent (content) {
+function showContent(content) {
   switch (content) {
-    case 'Inicio':
-      return <Inicio/>;
-    case 'Profesores':
-        return <Profesores/>;
-    case 'Videos':
-      return <Videos/>;
-    case 'Contact':
-      return <Contact/>;
+    case "Inicio":
+      return <Inicio />;
+    case "Profesores":
+      return <Profesores />;
+    case "Clases":
+      return <Clases />;
+    case "Contacto":
+      return <Contacto />;
     default:
       break;
   }
 }
+
 export default function Main(props) {
-  return (
-    <main className={dictionaryContent[props.content]}>
-      {showContent(props.content)}
-    </main>
-  );
+  return <MainContainer>{showContent(props.content)}</MainContainer>;
 }

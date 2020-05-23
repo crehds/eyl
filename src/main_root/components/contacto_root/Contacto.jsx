@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Mapa from './Mapa';
-import Online from './Online';
+import Mapa from './components/Mapa';
+import Online from './components/Online';
 
-import '../css/contact.css';
+import './css/contacto.css';
 export default class Contact extends Component {
 
   state = {
@@ -28,13 +28,13 @@ export default class Contact extends Component {
   }
   render() {
     return (
-      <React.Fragment>
+      <div className="contacto">
         <h3 id="mapa" onClick={this.setContent}>Mapa</h3>
         <h3 id="online" onClick={this.setContent}>Online</h3>
         {
           this.showContact(this.state.content)
         }
-      </React.Fragment>
+      </div>
     )
   }
 }

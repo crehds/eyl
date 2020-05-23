@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import '../css/profileProfesor.css';
-// import image from '../../assets/profesores/mishel_fernandez.jpg';
 
 export default class ProfileProfesor extends Component {
 

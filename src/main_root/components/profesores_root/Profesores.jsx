@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "../css/profesores.css";
-import ProfileProfesor from "./ProfileProfesor";
-import ProfesoresCarousel from "./ProfesoresCarousel";
-import profesores from "../../api/profesores.json";
-import Arrow from "./Arrow";
+import "./css/profesores.css";
+import ProfileProfesor from "./components/ProfileProfesor";
+import ProfesoresCarousel from "./components/ProfesoresCarousel";
+import profesores from "../../../api/profesores.json";
+import Arrow from "./components/Arrow";
 
 export default class Profesores extends Component {
   state = {
@@ -84,7 +84,7 @@ export default class Profesores extends Component {
   render() {
     const { src, profesor, genero, carousel, carouselId } = this.state;
     return (
-      <React.Fragment>
+      <div className="profesores">
         <ProfesoresCarousel
           handleProfile={this.handleProfile}
           carousel={carousel[carouselId]}
@@ -98,7 +98,7 @@ export default class Profesores extends Component {
           />
         )}
         <Arrow handleArrow={this.handleArrow} />
-      </React.Fragment>
+      </div>
     );
   }
 }

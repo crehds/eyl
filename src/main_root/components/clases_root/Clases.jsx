@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import "../css/inicio.css";
-import Template from "./template";
-export default class Inico extends Component {
+import "./css/clases.css";
+import Clase from "./components/Clase";
+import Video from "./components/Video";
+
+export default class Clases extends Component {
   state = {
     generos: [
       "Salsa",
@@ -14,29 +16,28 @@ export default class Inico extends Component {
       "Mambo",
       "Body Movement",
     ],
-    bailes: [],
+    clases: [],
   };
-
-  handleCarrusel = (generos) => {};
 
   componentDidMount() {
     this.state.generos.forEach((e, i) => {
       setTimeout(
         () =>
           this.setState({
-            bailes: this.state.bailes.concat([{ id: i + 1, string: e }]),
+            clases: this.state.clases.concat([{ id: i + 1, string: e }]),
           }),
         1000 * (i + 1)
       );
     });
   }
+
   render() {
-    const { bailes } = this.state;
+    const { clases } = this.state;
 
     return (
-      <div className="main1">
-        {bailes.map((e) => (
-          <Template content={e} />
+      <div className="clases">
+        {clases.map((e) => (
+          <Clase content={e} />
         ))}
       </div>
     );
