@@ -1,44 +1,104 @@
-import React, { Component } from 'react'
-import '../css/profesores.css';
-import ProfileProfesor from './ProfileProfesor';
+import React, { Component } from "react";
+import "../css/profesores.css";
+import ProfileProfesor from "./ProfileProfesor";
+import ProfesoresCarousel from "./ProfesoresCarousel";
+import profesores from "../../api/profesores.json";
+import Arrow from "./Arrow";
 
 export default class Profesores extends Component {
-
   state = {
     profile: false,
-  }
+    src: "",
+    profesor: "",
+    genero: "",
+    carousel: [],
+    carouselId: 0,
+  };
+
+  handleProfesors = (profesores) => {
+    let length = profesores.length;
+    let carousel = [];
+    for (let i = 0; i <= length; i = i + 4) {
+      carousel.push(profesores.slice(i, i + 4));
+    }
+
+    this.setState({
+      carousel,
+    });
+  };
+
+  handleProfile = (event) => {
+    let element = event.target.id;
+    let profesorId = element.slice(-1);
+    let profesor = profesores.images.find((e) => e.id === profesorId);
+    this.setState({
+      src: profesor.src,
+      profesor: profesor.profesor,
+      genero: profesor.genero,
+    });
+    this.showProfile();
+  };
 
   showProfile = () => {
-    if (this.state.profile){
+    if (this.state.profile) {
       return this.setState({
-        profile: false
-      })
+        profile: false,
+        src: "",
+        profesor: "",
+        genero: "",
+      });
     } else {
       return this.setState({
-        profile: true
-      })
+        profile: true,
+      });
     }
+  };
+
+  handleArrow = (event) => {
+    let direction = event.target.id;
+    if (direction === "left") {
+      if (this.state.carouselId === 0) {
+        return this.setState({
+          carouselId: this.state.carousel.length - 1,
+        });
+      }
+      return this.setState({
+        carouselId: this.state.carouselId - 1,
+      });
+    } else {
+      if (this.state.carouselId === this.state.carousel.length - 1) {
+        return this.setState({
+          carouselId: 0,
+        });
+      }
+      return this.setState({
+        carouselId: this.state.carouselId + 1,
+      });
+    }
+  };
+
+  componentDidMount() {
+    this.handleProfesors(profesores.images);
   }
 
   render() {
+    const { src, profesor, genero, carousel, carouselId } = this.state;
     return (
       <React.Fragment>
-        <div className="div-container-profesor">
-          <div className="div-profesor" onClick={this.showProfile}>Pr. 1</div>
-          <div className="div-profesor" onClick={this.showProfile}>Pr. 2</div>
-          <div className="div-profesor" onClick={this.showProfile}>Pr. 3</div>
-          <div className="div-profesor" onClick={this.showProfile}>Pr. 4</div>
-        </div>
-        {
-          this.state.profile &&
+        <ProfesoresCarousel
+          handleProfile={this.handleProfile}
+          carousel={carousel[carouselId]}
+        />
+        {this.state.profile && (
           <ProfileProfesor
-            showProfile = {this.showProfile}
+            showProfile={this.showProfile}
+            src={src}
+            profesor={profesor}
+            genero={genero}
           />
-        }
-        <div>
-          <div>F</div>
-        </div>
+        )}
+        <Arrow handleArrow={this.handleArrow} />
       </React.Fragment>
-    )
+    );
   }
 }

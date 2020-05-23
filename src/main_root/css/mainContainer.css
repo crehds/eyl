@@ -5,8 +5,10 @@
 
 .profesores {
   display:grid;
-  grid-template-columns: auto 8px;
+  /* grid-template-columns: auto 8px; */
   grid-gap: 3px;
+  position: relative;
+  margin:0 15px;
 }
 
 .videos {
