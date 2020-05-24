@@ -11,6 +11,7 @@ function copyText(event) {
   input.select();
   input.setSelectionRange(0, 99999);
   document.execCommand("copy");
+  alert("Copiado para pegar: " + input.value)
   document.body.removeChild(input);
 }
 
@@ -27,7 +28,7 @@ export default function Online() {
           <i id="1" className="icon-content_copy copy" onClick={copyText}></i>
         </li>
         <li id="prueba-2" className="prueba2">
-          expresionlatina@gmail.com
+          <span>expresionlatina@gmail.com</span>
           <i id="2" className="icon-content_copy copy" onClick={copyText}></i>
         </li>
       </ul>
