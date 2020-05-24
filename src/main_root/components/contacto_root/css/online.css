@@ -31,3 +31,9 @@
 .copy {
   font-size: 14px;
 }
+
+@media (orientation: landscape) {
+  .online {
+    padding-top: 2%;
+  }
+}

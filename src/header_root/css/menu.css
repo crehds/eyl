@@ -18,3 +18,9 @@
   right: 0;
   transition: .5s;
 }
+
+@media (orientation: landscape) {
+  .menu {
+    width: 50vh;
+  }
+}
