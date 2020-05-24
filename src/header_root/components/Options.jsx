@@ -11,7 +11,7 @@ export default function Options(props) {
         Profesores
       </li>
       <li id="Clases" onClick={props.sendContent}>
-        Videos
+        Clases
       </li>
       <li id="Contacto" onClick={props.sendContent}>
         Encuentranos

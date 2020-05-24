@@ -26,7 +26,7 @@ export default class Clases extends Component {
           this.setState({
             clases: this.state.clases.concat([{ id: i + 1, string: e }]),
           }),
-        1000 * (i + 1)
+        100 * (i + 1)
       );
     });
   }

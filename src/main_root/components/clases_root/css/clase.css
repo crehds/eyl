@@ -8,8 +8,9 @@
   align-items: center;
   justify-content: center;
   animation-name: opacidad;
-  animation-duration: 5s;
+  animation-duration: 3s;
   animation-iteration-count: 2;
+  animation-timing-function: ease-in;
   background-color:rgba(253,193,104,.4) ;
   font-size: 21px;
   border-radius: 8px;
