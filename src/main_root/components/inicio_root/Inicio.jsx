@@ -8,25 +8,12 @@ export default class Inico extends Component {
     return (
       <div className="inicio">
         <Carousel
+          autoplay
           framePadding="20px"
           defaultControlsConfig={{
             pagingDotsStyle: {
               fill: "rgba(255,194,48)",
             },
-          }}
-          getControlsContainerStyles={(key) => {
-            switch (key) {
-              case "CenterLeft":
-                return {
-                  left: "-10px",
-                };
-              case "CenterRight":
-                return {
-                  right: "-10px",
-                };
-              default:
-                break;
-            }
           }}
           renderCenterLeftControls={({ previousSlide }) => (
             <div className="inicio-arrow">
