@@ -8,7 +8,7 @@ import Footer from './footer_root/footer';
 export default class App extends Component {
   
   state = {
-    content: 'Profesores',
+    content: 'Inicio',
   }
 
   handleContent = (state) => {
