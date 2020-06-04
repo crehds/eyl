@@ -30,7 +30,7 @@ export default class Inico extends Component {
           )}
         >
           {posters.posters.map((e) => (
-            <img src={e.src} alt={e.description} />
+            <img src={process.env.PUBLIC_URL + e.src} alt={e.description} />
           ))}
         </Carousel>
       </div>
