@@ -1,0 +1,13 @@
+.day-titles {
+  grid-column: 2 / 3;
+  outline: 1px solid blue;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.day-title {
+  outline: 1px solid brown;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

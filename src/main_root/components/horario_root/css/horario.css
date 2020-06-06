@@ -1,0 +1,8 @@
+.horario {
+  outline: 1px solid red;
+  display: grid;
+  height: 100%;
+  text-align: center;
+  grid-template-columns: 14% 86%;
+  grid-template-rows: 1fr 8fr;
+}

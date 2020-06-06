@@ -1,5 +1,5 @@
 import React from "react";
-import '../css/options.css';
+import "../css/options.css";
 
 export default function Options(props) {
   return (
@@ -15,6 +15,9 @@ export default function Options(props) {
       </li>
       <li id="Contacto" onClick={props.sendContent}>
         Encuentranos
+      </li>
+      <li id="Horario" onClick={props.sendContent}>
+        Horario
       </li>
       <li>Opción N</li>
     </ul>
