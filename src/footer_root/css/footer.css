@@ -15,7 +15,7 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
-  color:inherit;
+  color:rgba(120,120,120, .9);
 }
 
 .footer-container a:hover {
