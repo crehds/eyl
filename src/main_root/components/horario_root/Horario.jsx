@@ -13,6 +13,10 @@ export default class Horario extends Component {
     actualDay: new Date().getDay(),
   };
 
+  componentWillUnmount() {
+    this.props.handleLoading();
+  }
+
   render() {
     return (
       <div className="horario">

@@ -9,6 +9,10 @@ export default class Contact extends Component {
     content:"mapa"
   }
 
+  componentWillUnmount() {
+    this.props.handleLoading();
+  }
+
   showContact = (contact) => {
     switch (contact) {
       case 'mapa':
