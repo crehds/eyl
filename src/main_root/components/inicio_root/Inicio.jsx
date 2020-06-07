@@ -4,6 +4,11 @@ import Carousel from "nuka-carousel";
 import posters from "../../../api/posters.json";
 
 export default class Inico extends Component {
+
+  componentWillUnmount() {
+    this.props.handleLoading();
+  }
+
   render() {
     return (
       <div className="inicio">
