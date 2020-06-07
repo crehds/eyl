@@ -19,6 +19,9 @@ export default function Options(props) {
       <li id="Horario" onClick={props.sendContent}>
         Horario
       </li>
+      <li id="Reseñas" onClick={props.sendContent}>
+        Reseñas
+      </li>
       <li>Opción N</li>
     </ul>
   );
