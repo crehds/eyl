@@ -31,6 +31,10 @@ export default class Clases extends Component {
     });
   }
 
+  componentWillUnmount() {
+    this.props.handleLoading();
+  }
+
   render() {
     const { clases } = this.state;
 
