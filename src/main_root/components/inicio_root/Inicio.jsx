@@ -4,6 +4,11 @@ import Carousel from "nuka-carousel";
 import posters from "../../../api/posters.json";
 
 export default class Inico extends Component {
+
+  componentWillUnmount() {
+    this.props.handleLoading();
+  }
+
   render() {
     return (
       <div className="inicio">
@@ -30,7 +35,7 @@ export default class Inico extends Component {
           )}
         >
           {posters.posters.map((e) => (
-            <img src={e.src} alt={e.description} />
+            <img src={process.env.PUBLIC_URL + e.src} alt={e.description} />
           ))}
         </Carousel>
       </div>

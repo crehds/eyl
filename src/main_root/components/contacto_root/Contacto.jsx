@@ -9,6 +9,10 @@ export default class Contact extends Component {
     content:"mapa"
   }
 
+  componentWillUnmount() {
+    this.props.handleLoading();
+  }
+
   showContact = (contact) => {
     switch (contact) {
       case 'mapa':
@@ -29,8 +33,8 @@ export default class Contact extends Component {
   render() {
     return (
       <div className="contacto">
-        <h3 id="mapa" onClick={this.setContent}>Mapa</h3>
-        <h3 id="online" onClick={this.setContent}>Online</h3>
+        <h3 id="mapa" className="pestaña" onClick={this.setContent}>Mapa</h3>
+        <h3 id="online" className="pestaña" onClick={this.setContent}>Online</h3>
         {
           this.showContact(this.state.content)
         }
