@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/logo.css';
-import logo from '../../assets/imageseymreact/logoEL.png';
+import logo from '../../assets/imageseymreact/logo_negro_resize.png';
 
 export default function Logo() {
   return (
