@@ -5,8 +5,10 @@ export default class Footer extends Component {
   render() {
     return (
       <footer className="footer-container">
-        <i className="icon-facebook-square"></i>
-        <i className="icon-instagram"></i>
+        <a className="icon-facebook-square" href="http://www.facebook.com/expresionlatina.peru" target="_blank" rel="noopener noreferrer">
+        </a>
+        <a className="icon-instagram" href="http://www.instagram.com/expresionlatina.peru/" target="_blank" rel="noopener noreferrer">
+        </a>
       </footer>
     )
   }

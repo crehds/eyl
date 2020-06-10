@@ -1,14 +1,10 @@
 .App-header {
-  /* background-color: #282c34; */
-  /* background-image: url('./assets/imageseymreact/Poster_Casting2.jpg'); */
-  display: grid;
-  grid-template-columns: 2fr 6fr;
-  grid-template-rows: 60px;
+  display: flex;
+  justify-content: center;
+  padding-left: 15vh;
+  padding-right: 15vh;
+  height: 80px;
   font-size: calc(10px + 2vmin);
-  /* color: white; */
   padding-top: 2px;
-}
-
-.menu {
-  border: 1px solid blue;
+  position: relative;
 }

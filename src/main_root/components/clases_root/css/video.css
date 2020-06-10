@@ -1,0 +1,8 @@
+.video {
+  display: grid;
+  grid-template-rows: 20px auto;
+  align-content: center;
+  justify-content: center;
+  grid-gap: 10px;
+  text-align: center;
+}

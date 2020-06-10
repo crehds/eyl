@@ -1,0 +1,15 @@
+.grid-active {
+  /* background-color: #035aa6; */
+  background: rgba(240, 165, 0, 0.7);
+  /* background-image: none; */
+  /* background-clip: content-box; */
+  font-weight: bold;
+  -webkit-text-fill-color: rgb(134, 87, 6);
+}
+
+.day-title.grid-active {
+  /* color: gray; */
+  background-image: none;
+  background-clip: content-box;
+  -webkit-text-fill-color: rgb(134, 87, 6);
+}

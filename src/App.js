@@ -18,7 +18,7 @@ export default class App extends Component {
   }
 
   render () {
-    const { content, dictionaryContent} = this.state;
+    const { content } = this.state;
     return (
       <div className="App">
         <Header
