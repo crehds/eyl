@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./css/profesores.css";
-import ProfileProfesor from "./components/ProfileProfesor";
+import ProfileProfesorModal from "./components/ProfileProfesorModal";
 import ProfesoresCarousel from "./components/ProfesoresCarousel";
 import profesores from "../../../api/profesores.json";
 import Arrow from "./components/Arrow";
@@ -30,7 +30,7 @@ export default class Profesores extends Component {
   handleProfile = (event) => {
     let element = event.target.id;
     let profesorId = element.slice(-1);
-    let profesor = profesores.images.find((e) => e.id === profesorId)
+    let profesor = profesores.images.find((e) => e.id === profesorId);
     this.setState({
       src: profesor.src,
       profesor: profesor.profesor,
@@ -90,7 +90,7 @@ export default class Profesores extends Component {
           carousel={carousel[carouselId]}
         />
         {this.state.profile && (
-          <ProfileProfesor
+          <ProfileProfesorModal
             showProfile={this.showProfile}
             src={src}
             profesor={profesor}
