@@ -9,9 +9,9 @@ export default function ProfesoresCarousel(props) {
     <div className={`div-container-profesor-${aux}`}>
       {props.carousel &&
       
-      props.carousel.map((e, i) => (
-        <div id={`prof-${i + 1}`} className="div-profesor" onClick={props.handleProfile} key={i}>
-          <img id={`prof-image-${i + 1}`} src={process.env.PUBLIC_URL + e.src} alt={e.profesor} />
+      props.carousel.map((e) => (
+        <div id={`prof-${e.id}`} className="div-profesor" onClick={props.handleProfile} key={e.id}>
+          <img id={`prof-image-${e.id}`} src={process.env.PUBLIC_URL + e.src} alt={e.profesor} />
         </div>
       ))}
     </div>

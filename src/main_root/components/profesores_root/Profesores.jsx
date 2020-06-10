@@ -30,7 +30,7 @@ export default class Profesores extends Component {
   handleProfile = (event) => {
     let element = event.target.id;
     let profesorId = element.slice(-1);
-    let profesor = profesores.images.find((e) => e.id === profesorId);
+    let profesor = profesores.images.find((e) => e.id === profesorId)
     this.setState({
       src: profesor.src,
       profesor: profesor.profesor,
