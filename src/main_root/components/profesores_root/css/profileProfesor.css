@@ -6,8 +6,9 @@
   max-width: 85%;
   background-color: gray;
   border-radius: 10px;
-  top: 0;
-  height: 100%;
+  top: 10%;
+  color: #fff;
+  height: 80%;
   left: 10%;
   right: 10%;
   box-shadow: 0 0 5px 10px rgba(85, 88, 218, 0.5);
