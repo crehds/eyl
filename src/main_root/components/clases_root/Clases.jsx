@@ -2,66 +2,56 @@ import React, { Component } from "react";
 import "./css/clases.css";
 import Clase from "./components/Clase";
 import Videos from "./components/Videos";
-
+import clases from "../../../api/clases.json";
 export default class Clases extends Component {
   state = {
-    contentClase: 'Clases',
-    generos: [
-      "Salsa",
-      "Bachata",
-      "Jazz",
-      "Latin Urban",
-      "Ladies",
-      "Ballet",
-      "Urban Style",
-      "Mambo",
-      "Body Movement",
-    ],
+    contentClase: "Clases",
     clases: [],
   };
 
+  setClases = (generos) => {
+    this.setState({ clases: clases.generos });
+  };
   componentDidMount() {
-    this.state.generos.forEach((e, i) => {
-      setTimeout(
-        () =>
-          this.setState({
-            clases: this.state.clases.concat([{ id: i + 1, string: e }]),
-          }),
-        100 * (i + 1)
-      );
-    });
+    this.setClases(clases);
   }
-
 
   toggleContent = () => {
-    if (this.state.contentClase === 'Clases') {
-      return setTimeout(() => this.setState({contentClase : 'Videos'}), 1000)
+    if (this.state.contentClase === "Clases") {
+      return setTimeout(() => this.setState({ contentClase: "Videos" }), 1000);
     } else {
-      return this.setState({contentClase : 'Clases'})
+      return this.setState({ contentClase: "Clases" });
     }
-  }
+  };
 
   componentWillUnmount() {
     this.props.handleLoading();
-    
   }
 
-  
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState !== this.state) {
+      console.log("aqui");
+    }
+  }
+
+  prueba = (e) => {
+    return <Clase content={e} onclick={this.toggleContent} />
+  }
   render() {
     const { clases } = this.state;
+    console.log(this.state.clasesTemplate);
 
-    if (this.state.contentClase === 'Clases') {
+    if (this.state.contentClase === "Clases") {
       return (
         <div className="clases">
-          {clases.map((e) => (
-            <Clase content={e} onclick={this.toggleContent}/>
-          ))}
+          {clases.length > 0 &&
+            clases.map((e, i) =>
+            <Clase content={e} onclick={this.toggleContent} />
+            )}
         </div>
       );
     } else {
-      return <Videos
-        toggleContent={this.toggleContent}
-      />
+      return <Videos toggleContent={this.toggleContent} />;
     }
   }
 }
