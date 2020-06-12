@@ -7,10 +7,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  animation-name: opacidad;
+  /* animation-name: opacidad;
   animation-duration: 4s;
   animation-iteration-count: 1;
-  animation-timing-function: steps(8);
+  animation-timing-function: steps(8); */
+  opacity: 0;
   background-image: radial-gradient(
     circle farthest-corner at 50.3% 44.5%,
     rgba(116, 147, 179, 0.3) 0%,

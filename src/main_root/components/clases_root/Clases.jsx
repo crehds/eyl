@@ -7,14 +7,40 @@ export default class Clases extends Component {
   state = {
     contentClase: "Clases",
     clases: [],
+    ref: [],
   };
 
-  setClases = (generos) => {
-    this.setState({ clases: clases.generos });
+  setClases = (clases) => {
+    let aux = this.addAnimation(this.state.ref);
+    return aux;
   };
+
+  addAnimation = (elements) => {
+    elements.forEach((e, i) =>
+      setTimeout(
+        (e) => {
+          e.style.animationName = "opacidad";
+          e.style.animationDuration = "4s";
+          e.style.aniamtionIterationCount = "1";
+          e.style.animationTimingFunction = "steps(8)";
+          e.style.opacity = "1";
+        },
+        100 * i,
+        e
+      )
+    );
+  };
+
   componentDidMount() {
-    this.setClases(clases);
+    this.setState({ clases: clases.generos });
   }
+
+  setClaseRef = (element) =>
+    this.setState((prevState) => ({ ref: [...prevState.ref, element] }));
+
+  cleanRef = () => {
+    this.setState({ ref: [] });
+  };
 
   toggleContent = () => {
     if (this.state.contentClase === "Clases") {
@@ -30,28 +56,31 @@ export default class Clases extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState !== this.state) {
+      this.addAnimation(this.state.ref);
       console.log("aqui");
     }
   }
 
-  prueba = (e) => {
-    return <Clase content={e} onclick={this.toggleContent} />
-  }
   render() {
     const { clases } = this.state;
-    console.log(this.state.clasesTemplate);
-
     if (this.state.contentClase === "Clases") {
       return (
         <div className="clases">
           {clases.length > 0 &&
-            clases.map((e, i) =>
-            <Clase content={e} onclick={this.toggleContent} />
-            )}
+            clases.map((e, i) => (
+              <Clase
+                key={i}
+                content={e}
+                onclick={this.toggleContent}
+                setClaseRef={this.setClaseRef}
+              />
+            ))}
         </div>
       );
     } else {
-      return <Videos toggleContent={this.toggleContent} />;
+      return (
+        <Videos toggleContent={this.toggleContent} cleanRef={this.cleanRef} />
+      );
     }
   }
 }
