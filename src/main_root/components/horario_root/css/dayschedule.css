@@ -1,6 +1,6 @@
 .days-schedule {
   display:grid;
-  grid-template-columns: repeat(7,1fr);
+  grid-template-columns: repeat(8,1fr);
   color:black;
   font-family: 'Tenali Ramakrishna';
 }

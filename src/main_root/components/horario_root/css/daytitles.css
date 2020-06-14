@@ -2,7 +2,7 @@
   grid-column: 2 / 3;
   /* outline: 1px solid blue; */
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   color:#cf7500;
   font-family: 'Abel';
   font-size: 20px;
