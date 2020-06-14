@@ -9,16 +9,19 @@ class Menu extends Component {
   };
 
   handleIsMenuActive = () => {
-    let hamburguerClass = document.getElementById("hamburguer").classList;
+    let hamburguer = document.getElementById("hamburguer");
+    let hamburguerClass = hamburguer.classList;
     let menuClass = document.getElementById("menu").classList;
 
     // TODO: Optimized
     if (hamburguerClass.contains("is-active")) {
       hamburguerClass.remove("is-active");
       menuClass.remove("is-active");
+      hamburguer.style.animationName = "none";
       document.removeEventListener("click", this.removeListener);
     } else {
       hamburguerClass.add("is-active");
+      hamburguer.style.animationName = "gradientefect";
       menuClass.add("is-active");
       document.addEventListener("click", this.removeListener);
     }
