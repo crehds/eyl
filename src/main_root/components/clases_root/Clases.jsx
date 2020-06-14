@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import "./css/clases.css";
-import Clase from "./components/Clase";
 import Videos from "./components/Videos";
-import clases from "../../../api/clases.json";
+import { generos } from "../../../api/clases.json";
+import Generos from "./components/Generos";
 export default class Clases extends Component {
   state = {
-    contentClase: "Clases",
-    clases: [],
+    contentClases: "Clases",
+    generos: [],
+    generoSelected: "",
     ref: [],
   };
 
-  setClases = (clases) => {
+  setGeneros = (generos) => {
     let aux = this.addAnimation(this.state.ref);
     return aux;
   };
@@ -32,21 +33,25 @@ export default class Clases extends Component {
   };
 
   componentDidMount() {
-    this.setState({ clases: clases.generos });
+    this.setState({ generos });
   }
 
-  setClaseRef = (element) =>
+  setGeneroRef = (element) =>
     this.setState((prevState) => ({ ref: [...prevState.ref, element] }));
 
   cleanRef = () => {
     this.setState({ ref: [] });
   };
 
-  toggleContent = () => {
-    if (this.state.contentClase === "Clases") {
-      return setTimeout(() => this.setState({ contentClase: "Videos" }), 1000);
+  setGeneroSelected = (generoSelected) => {
+    this.setState({ generoSelected });
+  };
+  toggleContent = (event) => {
+    if (this.state.contentClases === "Clases") {
+      this.setGeneroSelected(event.target.id);
+      return setTimeout(() => this.setState({ contentClases: "Videos" }), 1000);
     } else {
-      return this.setState({ contentClase: "Clases" });
+      return this.setState({ contentClases: "Clases" });
     }
   };
 
@@ -57,29 +62,27 @@ export default class Clases extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevState !== this.state) {
       this.addAnimation(this.state.ref);
-      console.log("aqui");
     }
   }
 
   render() {
-    const { clases } = this.state;
-    if (this.state.contentClase === "Clases") {
+    const { generos } = this.state;
+
+    if (this.state.contentClases === "Clases") {
       return (
-        <div className="clases">
-          {clases.length > 0 &&
-            clases.map((e, i) => (
-              <Clase
-                key={i}
-                content={e}
-                onclick={this.toggleContent}
-                setClaseRef={this.setClaseRef}
-              />
-            ))}
-        </div>
+        <Generos
+          generos={generos}
+          toggleContent={this.toggleContent}
+          setGeneroRef={this.setGeneroRef}
+        />
       );
     } else {
       return (
-        <Videos toggleContent={this.toggleContent} cleanRef={this.cleanRef} />
+        <Videos
+          toggleContent={this.toggleContent}
+          contentTitle={this.state.generoSelected}
+          cleanRef={this.cleanRef}
+        />
       );
     }
   }

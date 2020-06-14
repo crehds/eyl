@@ -13,7 +13,7 @@ export default class Videos extends Component {
             className="icon-arrow-left3 arrow-video"
             onClick={this.props.toggleContent}
           ></i>
-          <h3>Género</h3>
+          <h3>{this.props.contentTitle}</h3>
         </div>
         <div className="videos-container">
           <div className="video-box">
