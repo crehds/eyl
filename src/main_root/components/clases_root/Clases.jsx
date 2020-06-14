@@ -80,7 +80,7 @@ export default class Clases extends Component {
     } else {
       return (
         <Videos
-          videos = {videos}
+          videos={videos}
           toggleContent={this.toggleContent}
           contentTitle={this.state.generoSelected}
           cleanRef={this.cleanRef}
