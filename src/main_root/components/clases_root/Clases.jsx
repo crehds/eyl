@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./css/clases.css";
+
 import Videos from "./components/Videos";
 import { generos } from "../../../api/clases.json";
 import Generos from "./components/Generos";
