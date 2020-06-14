@@ -1,0 +1,18 @@
+.description-video {
+  border: 1px solid gray;
+  text-align: center;
+  color: black;
+  display: grid;
+  grid-template-columns: 30px auto;
+  align-items: center;
+}
+
+.arrow-description {
+  font-size: 20px;
+  padding: 10px;
+  color: gray;
+}
+
+.description-video h3 {
+  margin-right: 10%;
+}

@@ -1,8 +1,20 @@
-.video {
+/* .video {
   display: grid;
   grid-template-rows: 20px auto;
   align-content: center;
   justify-content: center;
   grid-gap: 10px;
   text-align: center;
+} */
+
+.video-box {
+  border: 1px solid gray;
+  display: flex;
+  justify-content: center;
+  padding: 5px 10px;
+}
+
+.video-box video {
+  max-width: 100%;
+  max-height: 100%;
 }

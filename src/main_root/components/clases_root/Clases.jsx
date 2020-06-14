@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 
 import Videos from "./components/Videos";
-import { generos } from "../../../api/clases.json";
 import Generos from "./components/Generos";
+import { generos } from "../../../api/clases.json";
+import { videos } from "../../../api/videos.json";
 export default class Clases extends Component {
   state = {
-    contentClases: "Clases",
+    contentClases: "Generos",
     generos: [],
     generoSelected: "",
     ref: [],
@@ -47,11 +48,11 @@ export default class Clases extends Component {
     this.setState({ generoSelected });
   };
   toggleContent = (event) => {
-    if (this.state.contentClases === "Clases") {
+    if (this.state.contentClases === "Generos") {
       this.setGeneroSelected(event.target.id);
       return setTimeout(() => this.setState({ contentClases: "Videos" }), 1000);
     } else {
-      return this.setState({ contentClases: "Clases" });
+      return this.setState({ contentClases: "Generos" });
     }
   };
 
@@ -68,7 +69,7 @@ export default class Clases extends Component {
   render() {
     const { generos } = this.state;
 
-    if (this.state.contentClases === "Clases") {
+    if (this.state.contentClases === "Generos") {
       return (
         <Generos
           generos={generos}
@@ -79,6 +80,7 @@ export default class Clases extends Component {
     } else {
       return (
         <Videos
+          videos = {videos}
           toggleContent={this.toggleContent}
           contentTitle={this.state.generoSelected}
           cleanRef={this.cleanRef}

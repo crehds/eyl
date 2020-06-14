@@ -1,45 +1,23 @@
 import React, { Component } from "react";
 import "../css/videos.css";
-
+import Video from "./Video";
+import DescriptionVideo from './DescriptionVideo'
 export default class Videos extends Component {
   componentDidMount() {
     this.props.cleanRef();
   }
   render() {
+    const { videos,toggleContent, contentTitle } = this.props;
     return (
       <div className="videos">
-        <div className="description-video">
-          <i
-            className="icon-arrow-left3 arrow-video"
-            onClick={this.props.toggleContent}
-          ></i>
-          <h3>{this.props.contentTitle}</h3>
-        </div>
+        <DescriptionVideo
+          toggleContent={toggleContent}
+          contentTitle={contentTitle}
+        />
         <div className="videos-container">
-          <div className="video-box">
-            <video
-              src={process.env.PUBLIC_URL + "/videos/video_corto.mp4"}
-              controls
-            ></video>
-          </div>
-          <div className="video-box">
-            <video
-              src={process.env.PUBLIC_URL + "/videos/video_largo.mp4"}
-              controls
-            ></video>
-          </div>
-          <div className="video-box">
-            <video
-              src={process.env.PUBLIC_URL + "/videos/ladies_latinas.mp4"}
-              controls
-            ></video>
-          </div>
-          <div className="video-box">
-            <video
-              src={process.env.PUBLIC_URL + "/videos/como_llegar.mp4"}
-              controls
-            ></video>
-          </div>
+          {videos.map((video, i) => (
+            <Video key={`video-${i}`} src={video.src} />
+          ))}
         </div>
       </div>
     );
