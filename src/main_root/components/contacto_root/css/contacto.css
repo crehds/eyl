@@ -12,9 +12,10 @@
   color: rgba(140,140,140,.4);
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
-  border-color: gray;
-  border-style: solid;
   transition: 3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pestaña:nth-child(1):hover{

@@ -3,7 +3,8 @@ import "../css/mapa.css";
 
 export default function Mapa() {
   return (
-    <div className="map-google">
+    <div className="mapa">
+      <div className="map-google">
       <iframe
         title="google-map"
         key="google-map"
@@ -16,6 +17,11 @@ export default function Mapa() {
         aria-hidden="false"
         tabIndex="0"
       ></iframe>
+    </div>
+    <div className="map-direction">
+      <span>Av. José Santos Chocano 469 - Los Olivos</span>
+      <span>Lima - Perú</span>
+    </div>
     </div>
   );
 }
