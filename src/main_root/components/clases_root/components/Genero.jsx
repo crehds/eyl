@@ -1,12 +1,13 @@
 import React, { PureComponent } from "react";
-import "../css/clase.css";
+import "../css/genero.css";
 
-export default class Clase extends PureComponent {
+export default class Genero extends PureComponent {
   render() {
     return (
       <div
-        ref={this.props.setClaseRef}
-        className="clase"
+        id={this.props.content.name}
+        ref={this.props.setGeneroRef}
+        className="genero"
         onClick={this.props.onclick}
       >
         {this.props.content.name}

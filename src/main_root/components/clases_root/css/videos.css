@@ -1,39 +1,16 @@
 .videos {
   display: grid;
   grid-template-rows: 1fr 8.4fr;
-  max-height: 100%;
-}
-
-.description-video {
-  border: 1px solid gray;
-  text-align: center;
-  color: black;
-  display: grid;
-  grid-template-columns: 30px auto;
-  align-items: center;
+  height: 100%;
+  border-bottom: 1px groove rgba(127, 146, 166, 1);
 }
 
 .videos-container {
   display: grid;
-  grid-template-rows: repeat(2, 170px);
-  grid-auto-rows: 170px;
-  height: 350px;
+  grid-template-rows: repeat(2, 200px);
+  grid-auto-rows: 200px;
+  /* height: 350px; */
+  height: calc(var(--vh, 1vh) * 100);
   overflow: auto;
-}
-
-.video-box {
-  border: 1px solid gray;
-  display: flex;
-  justify-content: center;
-  padding: 5px 10px;
-}
-
-.video-box video {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.arrow-video {
-  font-size: 20px;
-  padding: 10px;
+  padding-top:5px;
 }
