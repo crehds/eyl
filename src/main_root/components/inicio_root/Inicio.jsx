@@ -4,7 +4,6 @@ import Carousel from "nuka-carousel";
 import posters from "../../../api/posters.json";
 
 export default class Inico extends Component {
-
   componentWillUnmount() {
     this.props.handleLoading();
   }
@@ -14,11 +13,29 @@ export default class Inico extends Component {
       <div className="inicio">
         <Carousel
           autoplay
-          framePadding="20px"
+          framePadding="0px 20px"
           defaultControlsConfig={{
             pagingDotsStyle: {
               fill: "rgba(255,194,48)",
             },
+          }}
+          getControlsContainerStyles={(key) => {
+            switch (key) {
+              case "CenterLeft":
+                return {
+                  position: "fixed",
+                  top: "45%",
+                  left: "-20px",
+                };
+              case "CenterRight":
+                return {
+                  position: "fixed",
+                  top: "45%",
+                  right: "-20px",
+                };
+              default:
+                return {};
+            }
           }}
           renderCenterLeftControls={({ previousSlide }) => (
             <div className="inicio-arrow">
