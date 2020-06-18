@@ -8,13 +8,13 @@ export default class Profesor extends PureComponent {
 
   handleLoad = () => {
     const img = document.getElementById(`prof-image-${this.props.id}`);
-    img.addEventListener(
-      "load",
-      () => {
-        img.src = process.env.PUBLIC_URL + this.props.src;
-      },
-      false
-    );
+    img.addEventListener("load", this.setSrc, false);
+  };
+
+  setSrc = (event) => {
+    let elementImg = event.target;
+    elementImg.src = process.env.PUBLIC_URL + this.props.src;
+    elementImg.removeEventListener("load", this.setSrc, false);
   };
 
   componentDidMount() {
@@ -23,6 +23,8 @@ export default class Profesor extends PureComponent {
 
   componentDidUpdate(prevProps) {
     if (prevProps.src !== this.props.src) {
+      console.log("aqui");
+
       this.handleLoad();
     }
   }
