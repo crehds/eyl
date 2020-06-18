@@ -3,7 +3,6 @@ import "./css/profesores.css";
 import ProfileProfesorModal from "./components/ProfileProfesorModal";
 import ProfesoresCarousel from "./components/ProfesoresCarousel";
 import profesores from "../../../api/profesores.json";
-import Arrow from "./components/Arrow";
 
 export default class Profesores extends Component {
   state = {
@@ -12,7 +11,6 @@ export default class Profesores extends Component {
     profesor: "",
     genero: "",
     carousel: [],
-    carouselId: 0,
   };
 
   handleProfesors = (profesores) => {
@@ -54,40 +52,23 @@ export default class Profesores extends Component {
     }
   };
 
-  handleArrow = (event) => {
-    let direction = event.target.id;
-    if (direction === "left") {
-      if (this.state.carouselId === 0) {
-        return this.setState({
-          carouselId: this.state.carousel.length - 1,
-        });
-      }
-      return this.setState({
-        carouselId: this.state.carouselId - 1,
-      });
-    } else {
-      if (this.state.carouselId === this.state.carousel.length - 1) {
-        return this.setState({
-          carouselId: 0,
-        });
-      }
-      return this.setState({
-        carouselId: this.state.carouselId + 1,
-      });
-    }
-  };
-
   componentDidMount() {
     this.handleProfesors(profesores.images);
   }
 
+  componentWillUnmount() {
+    this.props.handleLoading();
+  }
+
   render() {
-    const { src, profesor, genero, carousel, carouselId } = this.state;
+    const { src, profesor, genero, carousel } = this.state;
+
     return (
       <div className="profesores">
         <ProfesoresCarousel
           handleProfile={this.handleProfile}
-          carousel={carousel[carouselId]}
+          handleProfesors={this.handleProfesors}
+          carousel={carousel}
         />
         {this.state.profile && (
           <ProfileProfesorModal
@@ -97,7 +78,6 @@ export default class Profesores extends Component {
             genero={genero}
           />
         )}
-        <Arrow handleArrow={this.handleArrow} />
       </div>
     );
   }
