@@ -252,15 +252,26 @@ h1,h2,h3,h4,h5,h6 {
 .icon2-calendar:before {
   content: "\e953";
 }
-.icon3-cc-visa:before {
-  content: "\e902";
+.icon3-phone-call:before {
+  content: "\e918";
 }
-.icon3-visa:before {
-  content: "\e903";
-  color: #142787;
+.icon3-phone2:before {
+  content: "\e919";
 }
 .icon3-shopping-cart:before {
   content: "\e904";
+}
+.icon3-location_on:before {
+  content: "\e912";
+}
+.icon3-place:before {
+  content: "\e912";
+}
+.icon3-room:before {
+  content: "\e912";
+}
+.icon3-location_off:before {
+  content: "\e913";
 }
 .icon3-add_shopping_cart:before {
   content: "\e905";
@@ -270,6 +281,40 @@ h1,h2,h3,h4,h5,h6 {
 }
 .icon3-shopping_cart:before {
   content: "\e906";
+}
+.icon3-location-pin:before {
+  content: "\e90f";
+}
+.icon3-location1:before {
+  content: "\e910";
+}
+.icon3-phone1:before {
+  content: "\e917";
+}
+.icon3-location:before {
+  content: "\e911";
+}
+.icon3-cc-visa:before {
+  content: "\e902";
+}
+.icon3-visa:before {
+  content: "\e903";
+  color: #142787;
+}
+.icon3-gmail:before {
+  content: "\e916";
+  /* color: #d14836; */
+  color: gray;
+}
+.icon3-visa:before {
+  content: "\e903";
+  color: #142787;
+}
+.icon3-mail-envelope-closed:before {
+  content: "\e914";
+}
+.icon3-mail-envelope-closed1:before {
+  content: "\e915";
 }
 .icon3-information:before {
   content: "\e907";
@@ -304,6 +349,9 @@ h1,h2,h3,h4,h5,h6 {
 .icon3-credit-card:before {
   content: "\e93f";
 }
+.icon3-phone:before {
+  content: "\e942";
+}
 .icon3-calendar:before {
   content: "\e953";
 }
@@ -334,3 +382,4 @@ h1,h2,h3,h4,h5,h6 {
 .icon3-spotify:before {
   content: "\ea94";
 }
+
