@@ -16,7 +16,7 @@ export default class Inico extends Component {
           framePadding="0px 20px"
           defaultControlsConfig={{
             pagingDotsStyle: {
-              fill: "rgba(255,194,48)",
+              fill: "rgba(95, 209, 249, 1)",
             },
           }}
           getControlsContainerStyles={(key) => {
@@ -24,17 +24,19 @@ export default class Inico extends Component {
               case "CenterLeft":
                 return {
                   position: "fixed",
-                  top: "45%",
-                  left: "-20px",
+                  top: "50%",
+                  left: "-19px",
                 };
               case "CenterRight":
                 return {
                   position: "fixed",
-                  top: "45%",
-                  right: "-20px",
+                  top: "50%",
+                  right: "-19px",
                 };
               default:
-                return {};
+                return {
+                  
+                };
             }
           }}
           renderCenterLeftControls={({ previousSlide }) => (
