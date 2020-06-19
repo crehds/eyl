@@ -1,5 +1,7 @@
 import React from "react";
 import "../css/online.css";
+import Swal from 'sweetalert2';
+// import "@sweetalert2/theme-borderless/borderless.css"
 
 function copyText(event) {
   let element = `prueba-${event.target.id}`;
@@ -11,7 +13,16 @@ function copyText(event) {
   input.select();
   input.setSelectionRange(0, 99999);
   document.execCommand("copy");
-  alert("Copiado para pegar: " + input.value);
+  Swal.fire({
+    title: 'Copiado',
+  text: input.value,
+  background: "rgb(56,71,94)",
+  customClass: {
+    title: "swal-custom-title",
+    content: "swal-custom-content"
+  }
+  
+  });
   document.body.removeChild(input);
 }
 
