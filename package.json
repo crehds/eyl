@@ -7,12 +7,19 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "debug": "^4.1.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
+    "dev:nodemon": "nodemon server/app.js",
+    "dev:server": "DEBUG=express:*,app:* npm run dev:nodemon",
+    "server": "node server/app.js",
     "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
@@ -22,6 +29,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "proxy": "http://192.168.0.6:4000",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -36,6 +44,7 @@
   },
   "devDependencies": {
     "gh-pages": "^2.2.0",
+    "nodemon": "^2.0.4",
     "nuka-carousel": "^4.7.0"
   }
 }
