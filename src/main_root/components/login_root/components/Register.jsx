@@ -10,7 +10,7 @@ export default function Register(props) {
         <input type="text" placeholder="Correo" />
         <input type="password" placeholder="Contraseña" />
         <div className="form-register-buttons">
-          <button className="form-button">Registrarme</button>
+          <button className="form-button" onClick={props.showMessageDev}>Registrarme</button>
           <button className="form-button" onClick={props.toggleContent}>Volver</button>
         </div>
       </fieldset>
