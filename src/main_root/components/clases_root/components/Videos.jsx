@@ -8,13 +8,26 @@ export default class Videos extends Component {
     const height = window.innerHeight;
 
     let vh = window.innerHeight * 0.01;
-
-    if (height >= 640) {
-      videosContainer.style.height = `${vh * 57}px`;
+    if (height >= 920) {
+      videosContainer.style.height = `${vh * 70}px`;
+      videosContainer.style.gridTemplateRows = `220px 220px`;
+        videosContainer.style.gridAutoRows = "220px";
     } else {
-      videosContainer.style.height = `${vh * 61}px`;
-      videosContainer.style.gridTemplateRows = `170px 170px`;
-      videosContainer.style.gridAutoRows = "170px";
+      if (height >= 740) {
+        videosContainer.style.height = `${vh * 62}px`;
+        videosContainer.style.gridTemplateRows = `210px 210px`;
+        videosContainer.style.gridAutoRows = "210px";
+      } else {
+        if (height >= 640) {
+          videosContainer.style.height = `${vh * 58.5}px`;
+          videosContainer.style.gridTemplateRows = `190px 190px`;
+          videosContainer.style.gridAutoRows = "190px";
+        } else {
+          videosContainer.style.height = `${vh * 57}px`;
+          videosContainer.style.gridTemplateRows = `170px 170px`;
+          videosContainer.style.gridAutoRows = "170px";
+        }
+      }
     }
   };
 
