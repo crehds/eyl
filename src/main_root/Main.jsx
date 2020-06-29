@@ -8,6 +8,7 @@ import MainContainer from "./container/MainContainer";
 import Horario from "./components/horario_root/Horario";
 import PageLoading from "../loading_root/PageLoading";
 import Reseñas from "./components/reseñas_root/Reseñas";
+import Login from "./components/login_root/Login";
 
 export default class Main extends Component {
   state = {
@@ -39,6 +40,8 @@ export default class Main extends Component {
         return <Reseñas handleLoading={this.handleLoading} />;
       case "Contacto":
         return <Contacto handleLoading={this.handleLoading} />;
+      case "Login":
+        return <Login handleLoading={this.handleLoading} />;
       default:
         break;
     }
