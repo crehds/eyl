@@ -18,3 +18,6 @@
   margin: 10px auto;
   font-family: 'Lato';
 }
+.form-button:focus {
+  outline:none;
+}
