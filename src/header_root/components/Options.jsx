@@ -23,7 +23,7 @@ export default function Options(props) {
         Encuentranos
       </li>
       <li id="Login" onClick={props.sendContent}>
-        Registrate
+        Conéctate
       </li>
       <li>Opción N</li>
     </ul>

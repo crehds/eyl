@@ -8,6 +8,14 @@ export default class Login extends Component {
     contentLogin: "Register",
   };
 
+  toggleContent = (event) => {
+    event.preventDefault();
+    if (this.state.contentLogin === "Session") {
+      this.setState({ contentLogin: "Register" })
+    } else {
+      return this.setState({ contentLogin: "Session" });
+    }
+  };
   componentWillUnmount() {
     this.props.handleLoading();
   }
