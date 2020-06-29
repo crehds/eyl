@@ -11,7 +11,13 @@
   /* border: 1px groove gray;
   box-shadow: 0 0 2px 2px gray; */
 }
+.swal-custom-title {
+  color: rgb(245,245,245) !important;
+}
 
+.swal-custom-content {
+  color: rgb(245,245,245) !important;
+}
 .prueba {
   /* border: solid 1px red; */
   color: gray;
