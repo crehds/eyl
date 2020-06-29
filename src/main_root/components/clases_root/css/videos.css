@@ -1,6 +1,6 @@
 .videos {
   display: grid;
-  grid-template-rows: 1fr 8.4fr;
+  grid-template-rows: 40px auto;
   height: 100%;
   border-bottom: 1px groove rgba(127, 146, 166, 1);
 }
