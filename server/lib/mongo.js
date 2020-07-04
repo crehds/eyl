@@ -46,7 +46,9 @@ class MongoLib {
     });
   }
 
-  create(collection, data) {
+  create(collection, { data }) {
+    console.log(data);
+    console.log(this);
     return this.connect()
       .then((db) => {
         return db.collection(collection).insertOne(data);
@@ -54,10 +56,9 @@ class MongoLib {
       .then((result) => result.insertedId);
   }
 
-  update(collection, id, data) {
+  update(collection, { id, data }) {
     return this.connect()
       .then((db) => {
-        console.log('aqui');
         return db
           .collection(collection)
           .updateOne({ _id: ObjectId(id) }, { $set: data }, { upsert: true });

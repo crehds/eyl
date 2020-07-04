@@ -1,5 +1,5 @@
 const MongoLib = require("../lib/mongo");
-const fs = require("fs");
+const createArrayImg = require("./utils");
 class PostersService {
   constructor() {
     this.collection = "posters";
@@ -19,61 +19,36 @@ class PostersService {
   }
 
   async createPoster({ posters }) {
-    let imgPosters = posters.map((poster) => {
-      let newImg = fs.readFileSync(poster.path);
-      let encImg = newImg.toString("base64");
-      let newItem = {
-        contentType: poster.mimetype,
-        size: poster.size,
-        img: Buffer(encImg, "base64"),
-      };
-      return newItem;
-    });
-    const arrayCreatedPosters = await this.arrayCreatePoster(imgPosters);
+    const arrayCreatedPosters = await this.createOrUpdate(null, posters);
     return arrayCreatedPosters || [];
   }
 
-  createImgPosters({ posters }) {
-    return posters.map((poster) => {
-      let newImg = fs.readFileSync(poster.path);
-      let encImg = newImg.toString("base64");
-      let newItem = {
-        contentType: poster.mimetype,
-        size: poster.size,
-        img: Buffer(encImg, "base64"),
-      };
-      return newItem;
-    });
-  }
-  async arrayCreatePoster(posters) {
-    let template = [];
-    for (let i = 0; i < posters.length; i++) {
-      let createdPosterID = await this.mongoDB.create(
-        this.collection,
-        posters[i]
-      );
-      template.push(createdPosterID);
-    }
-    return template;
-  }
-
-  async arrayUpdatedPoster(posterId, posters) {
-    let template = [];
-    for (let i = 0; i < posters.length; i++) {
-      let createdPosterID = await this.mongoDB.update(
-        this.collection,
-        posterId,
-        posters[i]
-      );
-      template.push(createdPosterID);
-    }
-    return template;
-  }
-
-  async updatePoster({ posterId, posters }) {
-    let updatedPoster = this.createImgPosters({ posters });
-    const updatedPosterId = await this.arrayUpdatedPoster(posterId, updatedPoster);
+  async updatePoster({ postersId, posters }) {
+    const updatedPosterId = await this.createOrUpdate(postersId, posters);
     return updatedPosterId;
+  }
+
+  async createOrUpdate(postersId, posters) {
+    let action = "";
+    let data = [];
+    if (postersId === null) {
+      action = (collection, poster) => this.mongoDB.create(collection, poster);
+      data = createArrayImg(null, posters);
+    } else {
+      action = (collection, poster) => this.mongoDB.update(collection, poster);
+      data = createArrayImg(postersId, posters);
+    }
+    const results = await this.execAction(action, data);
+    return results || [];
+  }
+
+  async execAction(action, data) {
+    const promises = data.map(async (poster) => {
+      let createdPosterId = await action(this.collection, poster);
+      return createdPosterId;
+    });
+    const resolvedPromises = await Promise.all(promises);
+    return resolvedPromises;
   }
 
   async deletePoster({ posterId }) {

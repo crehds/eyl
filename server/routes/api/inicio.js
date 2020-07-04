@@ -22,11 +22,11 @@ router.get("/:posterId", async function (req, res, next) {
   try {
     const poster = await postersService.getPoster({ posterId });
     //para veer la imagen en postman
-    res.status(200).type(poster.contentType).send(poster.img.buffer)
-    // res.status(200).json({
-    //   data: poster,
-    //   message: "poster retrieved",
-    // });
+    // res.status(200).type(poster.contentType).send(poster.img.buffer)
+    res.status(200).json({
+      data: poster,
+      message: "poster retrieved",
+    });
   } catch (error) {
     next(error);
   }
@@ -60,11 +60,11 @@ router.put(
   "/:posterId",
   multer({ dest: "../uploads/" }).array("image"),
   async function (req, res, next) {
-    const { posterId } = req.params;
+    const { postersId } = req.params;
     const { files: posters } = req;
     try {
       const updatedPoster = await postersService.updatePoster({
-        posterId,
+        postersId,
         posters
       });
       res.status(200).json({
