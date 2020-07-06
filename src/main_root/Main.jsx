@@ -9,6 +9,7 @@ import Horario from "./components/horario_root/Horario";
 import PageLoading from "../loading_root/PageLoading";
 import Reseñas from "./components/reseñas_root/Reseñas";
 import Login from "./components/login_root/Login";
+import Admin from "../admin_root/Admin";
 
 export default class Main extends Component {
   state = {
@@ -52,7 +53,9 @@ export default class Main extends Component {
       return <PageLoading />;
     }
     return (
-      <MainContainer>{this.showContent(this.props.content)}</MainContainer>
+      <MainContainer>{this.showContent(this.props.content)}
+      <Admin/></MainContainer>
+    
     );
   }
 }

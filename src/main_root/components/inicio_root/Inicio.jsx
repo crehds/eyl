@@ -37,7 +37,7 @@ export default class Inico extends Component {
             clearTimeout(timer);
           }}
           afterSlide={(slideIndex) => {
-            if (slideIndex === 4) {
+            if (slideIndex === posters.length - 1) {
               timer = setTimeout(() => this.setState({ slideIndex: 0 }), 5000);
             } else {
               this.setState({ slideIndex });
