@@ -9,7 +9,7 @@ router.get("/", async function (req, res, next) {
   try {
     const posters = await postersService.getPosters({ tags });
     res.status(200).json({
-      data: posters.length,
+      data: posters,
       message: "posters listed",
     });
   } catch (error) {

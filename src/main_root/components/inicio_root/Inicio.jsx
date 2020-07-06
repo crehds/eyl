@@ -1,18 +1,33 @@
 import React, { Component } from "react";
 import "./css/inicio.css";
 import Carousel from "nuka-carousel";
-import posters from "../../../api/posters.json";
-
+import PageLoading from "../../../loading_root/PageLoading";
 export default class Inico extends Component {
   state = {
     slideIndex: 0,
+    postersReady: false,
+    posters: [],
   };
   componentWillUnmount() {
     this.props.handleLoading();
   }
 
+  getPosters = async () => {
+    const posters = await fetch("/inicio").then((result) => result.json());
+    console.log(posters);
+    return this.setState({ posters , postersReady: true});
+  };
+
+  componentDidMount() {
+    this.getPosters();
+  }
+
   render() {
     let timer;
+    if (this.state.postersReady === false) {
+      return <PageLoading />;
+    }
+    const {data: posters} = this.state.posters;
     return (
       <div className="inicio">
         <Carousel
@@ -66,10 +81,10 @@ export default class Inico extends Component {
             </div>
           )}
         >
-          {posters.posters.map((e, i) => (
+          {posters.map((e, i) => (
             <img
               key={`img-inicio-${i}`}
-              src={process.env.PUBLIC_URL + e.src}
+              src={`data:${e.contentType};base64,${e.img}`}
               alt={e.description}
             />
           ))}

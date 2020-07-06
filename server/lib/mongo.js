@@ -18,6 +18,7 @@ class MongoLib {
   }
 
   connect() {
+    console.log(MONGO_URI);
     if (!MongoLib.connection) {
       MongoLib.connection = new Promise((resolve, reject) => {
         this.client.connect((err) => {
