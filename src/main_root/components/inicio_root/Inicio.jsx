@@ -15,6 +15,7 @@ export default class Inico extends Component {
   getPosters = async () => {
     const posters = await fetch("/inicio").then((result) => result.json());
     console.log(posters);
+    this.props.setGlobalProps(posters)
     return this.setState({ posters , postersReady: true});
   };
 

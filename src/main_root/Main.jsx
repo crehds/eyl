@@ -14,12 +14,16 @@ import Admin from "../admin_root/Admin";
 export default class Main extends Component {
   state = {
     isLoading: false,
+    globalProps: undefined,
   };
 
   componentDidMount() {
     setTimeout(() => this.setState({ isLoading: true }), 1000);
   }
 
+  setGlobalProps = (globalProps) => {
+    return this.setState({ globalProps });
+  };
   handleLoading = () => this.setState({ isLoading: false });
 
   componentDidUpdate(prevProps) {
@@ -30,7 +34,12 @@ export default class Main extends Component {
   showContent = (content) => {
     switch (content) {
       case "Inicio":
-        return <Inicio handleLoading={this.handleLoading} />;
+        return (
+          <Inicio
+            setGlobalProps={this.setGlobalProps}
+            handleLoading={this.handleLoading}
+          />
+        );
       case "Profesores":
         return <Profesores handleLoading={this.handleLoading} />;
       case "Clases":
@@ -53,9 +62,10 @@ export default class Main extends Component {
       return <PageLoading />;
     }
     return (
-      <MainContainer>{this.showContent(this.props.content)}
-      <Admin/></MainContainer>
-    
+      <MainContainer>
+        {this.showContent(this.props.content)}
+        <Admin globalProps={this.state.globalProps}/>
+      </MainContainer>
     );
   }
 }

@@ -4,6 +4,6 @@ import './css/admin.css'
 import ModalAdmin from './components/ModalAdmin'
 export default function Admin(props){
     return createPortal(
-      <ModalAdmin/>
+      <ModalAdmin globalProps={props.globalProps}/>
     ,document.getElementById("administrador"))
 }

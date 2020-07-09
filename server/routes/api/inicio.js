@@ -61,11 +61,13 @@ router.post(
 );
 
 router.put(
-  "/:posterId",
+  "/?",
   multer({ dest: "../uploads/" }).array("image"),
   async function (req, res, next) {
-    const { postersId } = req.params;
+    const { postersId } = req.query;
     const { files: posters } = req;
+    console.log(postersId);
+    console.log(posters.length);
     try {
       const updatedPoster = await postersService.updatePoster({
         postersId,
@@ -81,12 +83,12 @@ router.put(
   }
 );
 
-router.delete("/:posterId", async function (req, res, next) {
-  const { posterId } = req.params;
-
+router.delete("/?", async function (req, res, next) {
+  const { postersId } = req.query;
+  console.log(postersId);
   try {
     const deletedPoster = await postersService.deletePoster({
-      posterId,
+      postersId,
     });
     res.status(200).json({
       data: deletedPoster,

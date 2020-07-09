@@ -51,13 +51,16 @@ class PostersService {
     return resolvedPromises;
   }
 
-  async deletePoster({ posterId }) {
-    const deletedPosterId = await this.mongoDB.delete(
-      this.collection,
-      posterId
-    );
+  async deletePoster({ postersId }) {
+    const ids = postersId.split(",");
+    const promises = ids.map(async posterId => {
+      let deletedPoster = await this.mongoDB.delete(this.collection, posterId)
+      return deletedPoster
+    })
 
-    return deletedPosterId;
+    const deletedPosterIds = await Promise.all(promises)
+
+    return deletedPosterIds;
   }
 
   async deletePosters() {

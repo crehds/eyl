@@ -52,14 +52,17 @@ class MongoLib {
     console.log(this);
     return this.connect()
       .then((db) => {
+        debug("Creating poster...")
         return db.collection(collection).insertOne(data);
       })
       .then((result) => result.insertedId);
   }
 
-  update(collection, { id, data }) {
+  update(collection, {id, data}) {
     return this.connect()
       .then((db) => {
+        debug("Updating poster...")
+        console.log(id);
         return db
           .collection(collection)
           .updateOne({ _id: ObjectId(id) }, { $set: data }, { upsert: true });
