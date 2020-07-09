@@ -54,11 +54,12 @@ export default class ModalAdmin extends Component {
       method: "POST",
       body: formData,
     }).then((result) => result.json());
-
-    return Swal.fire({
+    await this.props.func();
+    Swal.fire({
       title: "Poster creado",
       timer: 1000,
       text: response.message,
+      showConfirmButton: false,
     });
   };
 
@@ -76,7 +77,13 @@ export default class ModalAdmin extends Component {
       method: "PUT",
       body: formData,
     }).then((result) => result.json());
-    console.log(response);
+    await this.props.func();
+    Swal.fire({
+      title: "Poster(s) actualizado(s)",
+      timer: 1000,
+      text: response.message,
+      showConfirmButton: false,
+    });
   };
 
   deleteOne = (event) => {
@@ -113,6 +120,7 @@ export default class ModalAdmin extends Component {
             method: "DELETE",
           }).then((response) => response.json());
           console.log(response);
+          await this.props.func();
           swal.fire({
             title: "Eliminados",
             text: `Todos los ${response.data.length} posters han sido eliminados`,

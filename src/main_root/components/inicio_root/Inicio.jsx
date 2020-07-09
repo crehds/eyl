@@ -15,12 +15,13 @@ export default class Inico extends Component {
   getPosters = async () => {
     const posters = await fetch("/inicio").then((result) => result.json());
     console.log(posters);
-    this.props.setGlobalProps(posters)
-    return this.setState({ posters , postersReady: true});
+    this.props.setGlobalProps(posters);
+    return this.setState({ posters, postersReady: true });
   };
 
   componentDidMount() {
     this.getPosters();
+    this.props.getFunction(this.getPosters);
   }
 
   render() {
@@ -28,7 +29,7 @@ export default class Inico extends Component {
     if (this.state.postersReady === false) {
       return <PageLoading />;
     }
-    const {data: posters} = this.state.posters;
+    const { data: posters } = this.state.posters;
     return (
       <div className="inicio">
         <Carousel

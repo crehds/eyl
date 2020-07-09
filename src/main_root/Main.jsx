@@ -15,6 +15,7 @@ export default class Main extends Component {
   state = {
     isLoading: false,
     globalProps: undefined,
+    func: undefined
   };
 
   componentDidMount() {
@@ -25,6 +26,10 @@ export default class Main extends Component {
     return this.setState({ globalProps });
   };
   handleLoading = () => this.setState({ isLoading: false });
+
+  getFunction = (func) => {
+    return this.setState({func})
+  };
 
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
@@ -38,6 +43,7 @@ export default class Main extends Component {
           <Inicio
             setGlobalProps={this.setGlobalProps}
             handleLoading={this.handleLoading}
+            getFunction={this.getFunction}
           />
         );
       case "Profesores":
@@ -64,7 +70,10 @@ export default class Main extends Component {
     return (
       <MainContainer>
         {this.showContent(this.props.content)}
-        <Admin globalProps={this.state.globalProps}/>
+        <Admin
+          globalProps={this.state.globalProps}
+          func={this.state.func}
+        />
       </MainContainer>
     );
   }
