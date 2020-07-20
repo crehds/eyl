@@ -9,7 +9,7 @@ import Horario from "./components/horario_root/Horario";
 import PageLoading from "../loading_root/PageLoading";
 import Reseñas from "./components/reseñas_root/Reseñas";
 import Login from "./components/login_root/Login";
-// import Admin from "../admin_root/Admin";
+import Admin from "../admin_root/Admin";
 import Profile from "./components/profile_root/Profile";
 
 export default class Main extends Component {
@@ -90,9 +90,9 @@ export default class Main extends Component {
     return (
       <MainContainer>
         {this.showContent(this.props.content)}
-        {/* {this.state.isAdmin && (
+        {this.state.isAdmin && (
           <Admin globalProps={this.state.globalProps}func={this.state.func} />
-        )} */}
+        )}
       </MainContainer>
     );
   }
