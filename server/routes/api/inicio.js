@@ -9,7 +9,7 @@ router.get("/", async function (req, res, next) {
   try {
     const posters = await postersService.getPosters({ tags });
     res.status(200).json({
-      data: posters.length,
+      data: posters,
       message: "posters listed",
     });
   } catch (error) {
@@ -36,20 +36,24 @@ router.post(
   "/",
   multer({ dest: "../uploads/" }).array("image"),
   async function (req, res, next) {
-    if (req.files.length === 0) {
-      res.status(200).json({
-        data: 0,
-        message: "no se cargaron imágenes",
-      });
-    }
-    const { files: posters } = req;
+    console.log(req.body);
+    console.log(req);
     try {
-      const createdPoster = await postersService.createPoster({ posters });
+      if (req.files.length === 0) {
+        res.status(200).json({
+          data: 0,
+          message: "no se cargaron imágenes",
+        });
+      } else {
+        const { files: posters } = req;
 
-      res.status(201).json({
-        data: createdPoster,
-        message: "poster created",
-      });
+        const createdPoster = await postersService.createPoster({ posters });
+
+        res.status(201).json({
+          data: createdPoster,
+          message: "poster created",
+        });
+      }
     } catch (error) {
       next(error);
     }
@@ -57,15 +61,17 @@ router.post(
 );
 
 router.put(
-  "/:posterId",
+  "/?",
   multer({ dest: "../uploads/" }).array("image"),
   async function (req, res, next) {
-    const { postersId } = req.params;
+    const { postersId } = req.query;
     const { files: posters } = req;
+    console.log(postersId);
+    console.log(posters.length);
     try {
       const updatedPoster = await postersService.updatePoster({
         postersId,
-        posters
+        posters,
       });
       res.status(200).json({
         data: updatedPoster,
@@ -77,12 +83,12 @@ router.put(
   }
 );
 
-router.delete("/:posterId", async function (req, res, next) {
-  const { posterId } = req.params;
-
+router.delete("/?", async function (req, res, next) {
+  const { postersId } = req.query;
+  console.log(postersId);
   try {
     const deletedPoster = await postersService.deletePoster({
-      posterId,
+      postersId,
     });
     res.status(200).json({
       data: deletedPoster,

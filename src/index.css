@@ -256,6 +256,12 @@ h1,h2,h3,h4,h5,h6 {
 .icon2-calendar:before {
   content: "\e953";
 }
+.icon3-refresh:before {
+  content: "\e91a";
+}
+.icon3-edit-2:before {
+  content: "\e91c";
+}
 .icon3-phone-call:before {
   content: "\e918";
 }
@@ -264,6 +270,9 @@ h1,h2,h3,h4,h5,h6 {
 }
 .icon3-shopping-cart:before {
   content: "\e904";
+}
+.icon3-create:before {
+  content: "\e91d";
 }
 .icon3-location_on:before {
   content: "\e912";
@@ -292,6 +301,9 @@ h1,h2,h3,h4,h5,h6 {
 .icon3-location1:before {
   content: "\e910";
 }
+.icon3-edit-pencil:before {
+  content: "\e91b";
+}
 .icon3-phone1:before {
   content: "\e917";
 }
@@ -301,14 +313,9 @@ h1,h2,h3,h4,h5,h6 {
 .icon3-cc-visa:before {
   content: "\e902";
 }
-.icon3-visa:before {
-  content: "\e903";
-  color: #142787;
-}
 .icon3-gmail:before {
   content: "\e916";
-  /* color: #d14836; */
-  color: gray;
+  color: #d14836;
 }
 .icon3-visa:before {
   content: "\e903";
@@ -347,6 +354,12 @@ h1,h2,h3,h4,h5,h6 {
 .icon3-calendar2:before {
   content: "\e901";
 }
+.icon3-params:before {
+  content: "\e91e";
+}
+.icon3-settings:before {
+  content: "\e91f";
+}
 .icon3-calendar1:before {
   content: "\e900";
 }
@@ -361,6 +374,15 @@ h1,h2,h3,h4,h5,h6 {
 }
 .icon3-download:before {
   content: "\e960";
+}
+.icon3-equalizer:before {
+  content: "\e992";
+}
+.icon3-equalizer2:before {
+  content: "\e993";
+}
+.icon3-cog:before {
+  content: "\e994";
 }
 .icon3-stats-bars2:before {
   content: "\e99d";
