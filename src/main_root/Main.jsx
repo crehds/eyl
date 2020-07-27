@@ -10,12 +10,14 @@ import PageLoading from "../loading_root/PageLoading";
 import Reseñas from "./components/reseñas_root/Reseñas";
 import Login from "./components/login_root/Login";
 import Admin from "../admin_root/Admin";
+import Profile from "./components/profile_root/Profile";
 
 export default class Main extends Component {
   state = {
     isLoading: false,
+    isAdmin: false,
     globalProps: undefined,
-    func: undefined
+    func: undefined,
   };
 
   componentDidMount() {
@@ -25,12 +27,20 @@ export default class Main extends Component {
   setGlobalProps = (globalProps) => {
     return this.setState({ globalProps });
   };
-  handleLoading = () => this.setState({ isLoading: false });
-
-  getFunction = (func) => {
-    return this.setState({func})
+  handleLoading = () => {
+    this.setState({ isLoading: false })
+    if (this.state.isAdmin) {
+      setTimeout(() => this.setState({ isLoading: true }), 1000);
+    }
   };
 
+  getFunction = (func) => {
+    return this.setState({ func });
+  };
+
+  handleIsAdmin = () => {
+    this.setState({isAdmin: true})
+  };
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
       setTimeout(() => this.setState({ isLoading: true }), 1000);
@@ -57,7 +67,17 @@ export default class Main extends Component {
       case "Contacto":
         return <Contacto handleLoading={this.handleLoading} />;
       case "Login":
-        return <Login handleLoading={this.handleLoading} />;
+        if (!this.state.isAdmin) {
+          return (
+            <Login
+              handleLoading={this.handleLoading}
+              handleIsAdmin={this.handleIsAdmin}
+            />
+          );
+        } else {
+          return <Profile />;
+        }
+
       default:
         break;
     }
@@ -70,10 +90,9 @@ export default class Main extends Component {
     return (
       <MainContainer>
         {this.showContent(this.props.content)}
-        <Admin
-          globalProps={this.state.globalProps}
-          func={this.state.func}
-        />
+        {this.state.isAdmin && (
+          <Admin globalProps={this.state.globalProps}func={this.state.func} />
+        )}
       </MainContainer>
     );
   }
