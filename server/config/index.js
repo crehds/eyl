@@ -4,10 +4,13 @@ const config = {
   dev: process.env.NODE_ENV !== "production",
   port: process.env.PORT || 4000,
   CORS: process.env.CORS,
-  DB_USER: process.env.DB_USER,
-  DB_PASSWORD: process.env.DB_PASSWORD,
-  DB_HOST: process.env.DB_HOST,
-  DB_NAME: process.env.DB_NAME,
+};
+
+const config_mysql = {
+  dbUserMysql: process.env.DB_USER_MYSQL,
+  dbPasswordMysql: process.env.DB_PASSWORD_MYSQL,
+  dbHostMysql: process.env.DB_HOST_MYSQL,
+  dbNameDBMysql: process.env.DB_NAME_MYSQL,
 };
 
 const config_mongo = {
@@ -17,4 +20,4 @@ const config_mongo = {
   dbNameDBMongo: process.env.DB_NAME_MONGO,
 };
 
-module.exports = { config, config_mongo };
+module.exports = { config, config_mysql, config_mongo };
