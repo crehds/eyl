@@ -18,4 +18,18 @@ router.get("/", async function (req, res, next) {
   }
 });
 
+router.get("/TypesOfUsers", async function (req, res, next) {
+  try {
+    const TypeUsers = await loginService.TypesUsers();
+    res.status(200).json({
+      data:TypeUsers,
+      message: "Type0s of Users listed"
+    })
+  } catch(error) {
+    next(error)
+  }
+})
+
+
+
 module.exports = router;

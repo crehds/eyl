@@ -10,6 +10,11 @@ class LoginService {
     const login = await this.mysqlDB.login(this.collection);
     return login || [];
   }
+
+  async TypesUsers() {
+    const TypesUsers = await this.mysqlDB.getTypesUser();
+    return TypesUsers || []
+  }
 }
 
 module.exports = LoginService;

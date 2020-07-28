@@ -41,6 +41,14 @@ class MySqlLib {
       return error;
     }
   }
+  
+  // async createUser(user) {
+    
+  // }
+
+  getTypesUser() {
+    return this.query(`select * from tipo_usuario`).then(rows => rows)
+  }
 }
 
 module.exports = MySqlLib;
