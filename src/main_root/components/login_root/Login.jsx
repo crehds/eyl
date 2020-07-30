@@ -33,7 +33,22 @@ export default class Login extends Component {
         text: "En desarrollo",
       });
     }
-    
+    // Swal.fire({
+    //   icon: "info",
+    //   text: "En desarrollo",
+    // });
+  };
+
+  showDataForm = async (user, login) => {
+    const result = await fetch("/login/createUser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({user, login})
+    }).then((result) => result.json()
+    );
+    console.log(result);
   };
 
   componentWillUnmount() {
@@ -59,7 +74,7 @@ export default class Login extends Component {
     Swal.fire({
       icon: "info",
       text:
-        "Luego de registra rte con datos básicos podrás añadir mas información a tu perfil",
+        "Luego de registrarte con datos básicos podrás añadir mas información a tu perfil",
     });
   };
 
@@ -75,6 +90,7 @@ export default class Login extends Component {
           <Register
             toggleContent={this.toggleContent}
             showMessageDev={this.showMessageDev}
+            showDataForm={this.showDataForm}
           />
         )}
       </div>

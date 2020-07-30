@@ -2,7 +2,7 @@ const MySqlLib = require("../lib/mysql");
 
 class LoginService {
   constructor() {
-    this.collection = "login"
+    this.collection = "login";
     this.mysqlDB = new MySqlLib();
   }
 
@@ -13,7 +13,21 @@ class LoginService {
 
   async TypesUsers() {
     const TypesUsers = await this.mysqlDB.getTypesUser();
-    return TypesUsers || []
+    return TypesUsers || [];
+  }
+
+  async getUsers() {
+    const users = await this.mysqlDB.getUsers();
+    return users || [];
+  }
+
+  async createUser({ user, login }) {
+    const userCreated = await this.mysqlDB.createUser({ user });
+    const loginCreated = await this.mysqlDB.createLogin(
+      { login },
+      userCreated.insertId
+    );
+    return { userCreated, loginCreated } || [];
   }
 }
 
