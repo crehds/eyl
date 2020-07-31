@@ -10,7 +10,6 @@ import PageLoading from "../loading_root/PageLoading";
 import Reseñas from "./components/reseñas_root/Reseñas";
 import Login from "./components/login_root/Login";
 import Admin from "../admin_root/Admin";
-import Profile from "./components/profile_root/Profile";
 
 export default class Main extends Component {
   state = {
@@ -28,7 +27,7 @@ export default class Main extends Component {
     return this.setState({ globalProps });
   };
   handleLoading = () => {
-    this.setState({ isLoading: false })
+    this.setState({ isLoading: false });
     if (this.state.isAdmin) {
       setTimeout(() => this.setState({ isLoading: true }), 1000);
     }
@@ -39,7 +38,7 @@ export default class Main extends Component {
   };
 
   handleIsAdmin = () => {
-    this.setState({isAdmin: true})
+    this.setState({ isAdmin: true });
   };
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
@@ -67,16 +66,12 @@ export default class Main extends Component {
       case "Contacto":
         return <Contacto handleLoading={this.handleLoading} />;
       case "Login":
-        if (!this.state.isAdmin) {
-          return (
-            <Login
-              handleLoading={this.handleLoading}
-              handleIsAdmin={this.handleIsAdmin}
-            />
-          );
-        } else {
-          return <Profile />;
-        }
+        return (
+          <Login
+            handleLoading={this.handleLoading}
+            handleIsAdmin={this.handleIsAdmin}
+          />
+        );
 
       default:
         break;
@@ -91,7 +86,7 @@ export default class Main extends Component {
       <MainContainer>
         {this.showContent(this.props.content)}
         {this.state.isAdmin && (
-          <Admin globalProps={this.state.globalProps}func={this.state.func} />
+          <Admin globalProps={this.state.globalProps} func={this.state.func} />
         )}
       </MainContainer>
     );

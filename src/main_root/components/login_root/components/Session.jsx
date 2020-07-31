@@ -10,7 +10,7 @@ export default function Session(props) {
         <input id="session-password" type="password" name="password" placeholder="Contraseña" />
         <div className="form-session-buttons">
           <button className="form-button" onClick={props.showMessageDev}>Iniciar Sesión</button>
-          <button className="form-button" onClick={props.createAccount}>Crea una cuenta</button>
+          <button id="Register" className="form-button" onClick={props.handleStateLogin}>Crea una cuenta</button>
         </div>
       </fieldset>
     </form>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./css/login.css";
 import Register from "./components/Register";
 import Session from "./components/Session";
+import Profile from "./components/profile_root/Profile";
 import Swal from "sweetalert2";
 import admin from "../../../api/admin.json";
 export default class Login extends Component {
@@ -9,20 +10,12 @@ export default class Login extends Component {
     contentLogin: "Session",
   };
 
-  toggleContent = (event) => {
-    if (event) event.preventDefault();
-    if (this.state.contentLogin === "Session") {
-      this.setState({ contentLogin: "Register" });
-    } else {
-      return this.setState({ contentLogin: "Session" });
-    }
-  };
-
   showMessageDev = (event) => {
     event.preventDefault();
     const admin = this.handlerLoginAdmin();
-    if(admin) {
-      this.props.handleIsAdmin()
+    if (admin) {
+      this.setState({ contentLogin: "Profile" });
+      this.props.handleIsAdmin();
       Swal.fire({
         icon: "success",
         text: "Bienvenida Doña Fernández",
@@ -45,15 +38,10 @@ export default class Login extends Component {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({user, login})
-    }).then((result) => result.json()
-    );
+      body: JSON.stringify({ user, login }),
+    }).then((result) => result.json());
     console.log(result);
   };
-
-  componentWillUnmount() {
-    this.props.handleLoading();
-  }
 
   handlerLoginAdmin = () => {
     const usuario = document.getElementById("session-usuario").value;
@@ -64,12 +52,6 @@ export default class Login extends Component {
     return false;
   };
 
-  createAccount = (event) => {
-    event.preventDefault();
-    this.showMessageRegister();
-    this.toggleContent();
-  };
-
   showMessageRegister = () => {
     Swal.fire({
       icon: "info",
@@ -78,21 +60,43 @@ export default class Login extends Component {
     });
   };
 
-  render() {
-    return (
-      <div className="login">
-        {this.state.contentLogin === "Session" ? (
+  handleStateLogin = (event) => {
+    return this.setState({ contentLogin: event.target.id });
+  };
+
+  handleContentLogin = (content) => {
+    switch (content) {
+      case "Session":
+        return (
           <Session
-            createAccount={this.createAccount}
+            handleStateLogin={this.handleStateLogin}
             showMessageDev={this.showMessageDev}
           />
-        ) : (
+        );
+      case "Register":
+        this.showMessageRegister();
+        return (
           <Register
-            toggleContent={this.toggleContent}
+            handleStateLogin={this.handleStateLogin}
             showMessageDev={this.showMessageDev}
             showDataForm={this.showDataForm}
           />
-        )}
+        );
+      case "Profile":
+        return <Profile toggleContent={this.toggleContent} />;
+      default:
+        break;
+    }
+  };
+
+  componentWillUnmount() {
+    this.props.handleLoading();
+  }
+
+  render() {
+    return (
+      <div className="login">
+        {this.handleContentLogin(this.state.contentLogin)}
       </div>
     );
   }

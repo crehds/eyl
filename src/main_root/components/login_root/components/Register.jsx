@@ -118,7 +118,7 @@ export default class Register extends Component {
             </button>
           )}
 
-          <button className="form-button" onClick={this.props.toggleContent}>
+          <button id="Session" className="form-button" onClick={this.props.handleStateLogin}>
             Cancelar
           </button>
         </div>
