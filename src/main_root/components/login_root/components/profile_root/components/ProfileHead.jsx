@@ -1,12 +1,13 @@
 import React from "react";
 import "../css/profilehead.css";
 export default function ProfileHead(props) {
+  const {user} = props.userRegistered;
   return (
     <div className="profile-head">
-      <h4 className="profile-head__name">Marycarmen Campos Velez</h4>
+      <h4 className="profile-head__name">{`${user.name || user.nombre} ${user.lastname || user.apellido}`}</h4>
       <div className="profile-head__container">
         <img
-          src={process.env.PUBLIC_URL + "/profile/marycarmen_facebook.jpg"}
+          src={process.env.PUBLIC_URL + "/profile/default-user.png"}
           alt="foto del admin"
         />
       </div>

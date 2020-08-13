@@ -100,6 +100,14 @@ class MySqlLib {
     }
   }
 
+  getLogin(login) {
+    return this.query(`select * from login where login_name='${login.name}' and login_password='${login.password}'`)
+  }
+
+  getUser(idusuario) {
+    return this.query(`select * from usuario where idUsuario=${idusuario}`)
+  }
+
   // INSERT INTO `expresionlatina`.`tipo_usuario` (`idTipo_usuario`, `tipo_usuario`) VALUES ('4', 'Becado');
   getUsers() {
     return this.query(`select * from usuario`);

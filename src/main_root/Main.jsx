@@ -70,6 +70,8 @@ export default class Main extends Component {
           <Login
             handleLoading={this.handleLoading}
             handleIsAdmin={this.handleIsAdmin}
+            getFunction={this.getFunction}
+            headerFunc={this.props.headerFunc}
           />
         );
 

@@ -8,6 +8,8 @@ import admin from "../../../api/admin.json";
 export default class Login extends Component {
   state = {
     contentLogin: "Session",
+    userRegistered: {},
+    prueba: "",
   };
 
   showMessageDev = (event) => {
@@ -20,6 +22,7 @@ export default class Login extends Component {
         icon: "success",
         text: "Bienvenida Doña Fernández",
       });
+      this.props.headerFunc(true);
     } else {
       Swal.fire({
         icon: "info",
@@ -32,6 +35,31 @@ export default class Login extends Component {
     // });
   };
 
+  findUser = async (event) => {
+    event.preventDefault();
+    const name = document.getElementById("session-usuario").value;
+    const password = document.getElementById("session-password").value;
+    const { data } = await fetch("/login/findUser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        login: {
+          name,
+          password
+        },
+      }),
+    }).then((result) => result.json());
+    this.setState({
+      contentLogin: "Profile",
+      userRegistered: {
+        user: data.user[0],
+        login: data.login[0],
+      },
+    });
+  };
+
   showDataForm = async (user, login) => {
     const result = await fetch("/login/createUser", {
       method: "POST",
@@ -41,6 +69,13 @@ export default class Login extends Component {
       body: JSON.stringify({ user, login }),
     }).then((result) => result.json());
     console.log(result);
+    this.setState({
+      contentLogin: "Profile",
+      userRegistered: {
+        user,
+        login,
+      },
+    });
   };
 
   handlerLoginAdmin = () => {
@@ -71,6 +106,7 @@ export default class Login extends Component {
           <Session
             handleStateLogin={this.handleStateLogin}
             showMessageDev={this.showMessageDev}
+            findUser={this.findUser}
           />
         );
       case "Register":
@@ -83,7 +119,12 @@ export default class Login extends Component {
           />
         );
       case "Profile":
-        return <Profile toggleContent={this.toggleContent} />;
+        return (
+          <Profile
+            toggleContent={this.toggleContent}
+            userRegistered={this.state.userRegistered}
+          />
+        );
       default:
         break;
     }

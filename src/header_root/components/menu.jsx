@@ -24,7 +24,7 @@ class Menu extends Component {
       hamburguer.style.animationName = "gradientefect";
       menuClass.add("is-active");
       document.addEventListener("click", this.removeListener);
-    }
+    } 
   };
 
   removeListener = (event) => {
@@ -38,7 +38,8 @@ class Menu extends Component {
     return (
       <div id="menu" className="menu">
         <HamburguerMenu handleIsMenuActive={this.handleIsMenuActive} />
-        <Options sendContent={this.sendContent} />
+        <Options sendContent={this.sendContent} 
+        profile={this.props.profile} />
       </div>
     );
   }

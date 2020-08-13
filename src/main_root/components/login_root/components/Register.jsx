@@ -30,8 +30,10 @@ export default class Register extends Component {
   };
 
   handleData = (event) => {
+    console.log('formaluario de registro');
     const form = new FormData(document.getElementById("form-prueba"));
     const data = Object.assign({}, this.getKeysAndValues(form));
+    console.log(data);
     if (this.state.partRegister) {
       this.setState({ user: {...data} });
       this.handlePartRegister();
@@ -110,7 +112,7 @@ export default class Register extends Component {
             </button>
           ) : (
             <button
-              key="2"
+              key="register-2"
               id="register-change-button"
               className="form-button"
             >

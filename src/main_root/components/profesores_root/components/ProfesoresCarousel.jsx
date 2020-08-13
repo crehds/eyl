@@ -48,11 +48,12 @@ export default class ProfesoresCarousel extends Component {
     return (
       <div className={`div-container-profesor-${aux}`}>
         {this.props.carousel[carouselId] &&
-          this.props.carousel[carouselId].map((e) => (
+          this.props.carousel[carouselId].map((e,i) => (
             <Profesor
               handleProfile={this.props.handleProfile}
               id={e.id}
               src={e.src}
+              key={i}
               profesor={e.profesor}
             />
           ))}

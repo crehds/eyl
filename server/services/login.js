@@ -6,14 +6,25 @@ class LoginService {
     this.mysqlDB = new MySqlLib();
   }
 
-  async getLogin() {
-    const login = await this.mysqlDB.login(this.collection);
+  // async getLogin() {
+  //   const login = await this.mysqlDB.login(this.collection);
+  //   return login || [];
+  // }
+
+  async getLogin(findlogin) {
+    const login = await this.mysqlDB.getLogin(findlogin);
     return login || [];
   }
 
   async TypesUsers() {
     const TypesUsers = await this.mysqlDB.getTypesUser();
     return TypesUsers || [];
+  }
+
+  async getUser(findlogin) {
+    const login = await this.getLogin(findlogin);
+    const user = await this.mysqlDB.getUser(login[0].Usuario)
+    return {login, user} || [];
   }
 
   async getUsers() {
