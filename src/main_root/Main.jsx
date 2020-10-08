@@ -17,6 +17,11 @@ export default class Main extends Component {
     isAdmin: false,
     globalProps: undefined,
     func: undefined,
+    Login: {
+      content: "Session",
+      user: "",
+      login: "",
+    },
   };
 
   componentDidMount() {
@@ -45,6 +50,25 @@ export default class Main extends Component {
       setTimeout(() => this.setState({ isLoading: true }), 1000);
     }
   }
+
+  handleContentLogin = (event) => {
+    return this.setState({
+      Login: {
+        content: event.target.id,
+      },
+    });
+  };
+
+  handleInfoLogin = (content, user, login) => {
+    return this.setState({
+      Login: {
+        content,
+        user,
+        login
+      },
+    });
+  };
+
   showContent = (content) => {
     switch (content) {
       case "Inicio":
@@ -72,6 +96,9 @@ export default class Main extends Component {
             handleIsAdmin={this.handleIsAdmin}
             getFunction={this.getFunction}
             headerFunc={this.props.headerFunc}
+            Login={this.state.Login}
+            handleContentLogin={this.handleContentLogin}
+            handleInfoLogin={this.handleInfoLogin}
           />
         );
 

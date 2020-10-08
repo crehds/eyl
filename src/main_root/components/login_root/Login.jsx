@@ -6,11 +6,8 @@ import Profile from "./components/profile_root/Profile";
 import Swal from "sweetalert2";
 import admin from "../../../api/admin.json";
 export default class Login extends Component {
-  state = {
-    contentLogin: "Session",
-    userRegistered: {},
-    prueba: "",
-  };
+  // state = {
+  // };
 
   showMessageDev = (event) => {
     event.preventDefault();
@@ -47,21 +44,15 @@ export default class Login extends Component {
       body: JSON.stringify({
         login: {
           name,
-          password
+          password,
         },
       }),
     }).then((result) => result.json());
-    this.setState({
-      contentLogin: "Profile",
-      userRegistered: {
-        user: data.user[0],
-        login: data.login[0],
-      },
-    });
+    this.props.handleInfoLogin("Profile", data.user[0], data.login[0]);
   };
 
   showDataForm = async (user, login) => {
-    const result = await fetch("/login/createUser", {
+    const result= await fetch("/login/createUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -69,13 +60,7 @@ export default class Login extends Component {
       body: JSON.stringify({ user, login }),
     }).then((result) => result.json());
     console.log(result);
-    this.setState({
-      contentLogin: "Profile",
-      userRegistered: {
-        user,
-        login,
-      },
-    });
+    this.props.handleInfoLogin("Profile", user, login);
   };
 
   handlerLoginAdmin = () => {
@@ -104,7 +89,7 @@ export default class Login extends Component {
       case "Session":
         return (
           <Session
-            handleStateLogin={this.handleStateLogin}
+            handleStateLogin={this.props.handleContentLogin}
             showMessageDev={this.showMessageDev}
             findUser={this.findUser}
           />
@@ -113,7 +98,7 @@ export default class Login extends Component {
         this.showMessageRegister();
         return (
           <Register
-            handleStateLogin={this.handleStateLogin}
+            handleStateLogin={this.props.handleContentLogin}
             showMessageDev={this.showMessageDev}
             showDataForm={this.showDataForm}
           />
@@ -122,7 +107,7 @@ export default class Login extends Component {
         return (
           <Profile
             toggleContent={this.toggleContent}
-            userRegistered={this.state.userRegistered}
+            userRegistered={this.props.Login}
           />
         );
       default:
@@ -137,7 +122,7 @@ export default class Login extends Component {
   render() {
     return (
       <div className="login">
-        {this.handleContentLogin(this.state.contentLogin)}
+        {this.handleContentLogin(this.props.Login.content)}
       </div>
     );
   }
