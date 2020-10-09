@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../css/menu.css";
 import HamburguerMenu from "./HamburguerMenu";
 import Options from "./Options";
+import UserImage from "./UserImage";
 
 class Menu extends Component {
   sendContent = (event) => {
@@ -38,6 +39,10 @@ class Menu extends Component {
     return (
       <div id="menu" className="menu">
         <HamburguerMenu handleIsMenuActive={this.handleIsMenuActive} />
+        {
+          this.props.profile && 
+          <UserImage/>
+        }
         <Options sendContent={this.sendContent} 
         profile={this.props.profile} />
       </div>
