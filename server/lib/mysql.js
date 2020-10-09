@@ -124,7 +124,7 @@ class MySqlLib {
   }
 
   createLogin({login}, userId) {
-    return this.query(`insert into login (login_name, login_password, Usuario) values('${login.login}', '${login.password}', ${userId})`)
+    return this.query(`insert into login (login_name, login_password, Usuario) values('${login.usuario}', '${login.password}', ${userId})`)
   }
 }
 

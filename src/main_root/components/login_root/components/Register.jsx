@@ -80,7 +80,7 @@ export default class Register extends Component {
             <input
               key="5"
               type="text"
-              name="login"
+              name="usuario"
               placeholder="Nombre de usuario"
             />
             <input
