@@ -48,6 +48,7 @@ export default class Login extends Component {
         },
       }),
     }).then((result) => result.json());
+    this.props.headerFunc(true);
     this.props.handleInfoLogin("Profile", data.user[0], data.login[0]);
   };
 
@@ -60,6 +61,7 @@ export default class Login extends Component {
       body: JSON.stringify({ user, login }),
     }).then((result) => result.json());
     console.log(result);
+    this.props.headerFunc(true);
     this.props.handleInfoLogin("Profile", user, login);
   };
 
