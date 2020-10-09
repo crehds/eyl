@@ -10,7 +10,6 @@ import PageLoading from "../loading_root/PageLoading";
 import Reseñas from "./components/reseñas_root/Reseñas";
 import Login from "./components/login_root/Login";
 import Admin from "../admin_root/Admin";
-import Profile from "./components/profile_root/Profile";
 
 export default class Main extends Component {
   state = {
@@ -18,6 +17,11 @@ export default class Main extends Component {
     isAdmin: false,
     globalProps: undefined,
     func: undefined,
+    Login: {
+      content: "Session",
+      user: "",
+      login: "",
+    },
   };
 
   componentDidMount() {
@@ -28,7 +32,7 @@ export default class Main extends Component {
     return this.setState({ globalProps });
   };
   handleLoading = () => {
-    this.setState({ isLoading: false })
+    this.setState({ isLoading: false });
     if (this.state.isAdmin) {
       setTimeout(() => this.setState({ isLoading: true }), 1000);
     }
@@ -39,13 +43,32 @@ export default class Main extends Component {
   };
 
   handleIsAdmin = () => {
-    this.setState({isAdmin: true})
+    this.setState({ isAdmin: true });
   };
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
       setTimeout(() => this.setState({ isLoading: true }), 1000);
     }
   }
+
+  handleContentLogin = (event) => {
+    return this.setState({
+      Login: {
+        content: event.target.id,
+      },
+    });
+  };
+
+  handleInfoLogin = (content, user, login) => {
+    return this.setState({
+      Login: {
+        content,
+        user,
+        login
+      },
+    });
+  };
+
   showContent = (content) => {
     switch (content) {
       case "Inicio":
@@ -67,16 +90,17 @@ export default class Main extends Component {
       case "Contacto":
         return <Contacto handleLoading={this.handleLoading} />;
       case "Login":
-        if (!this.state.isAdmin) {
-          return (
-            <Login
-              handleLoading={this.handleLoading}
-              handleIsAdmin={this.handleIsAdmin}
-            />
-          );
-        } else {
-          return <Profile />;
-        }
+        return (
+          <Login
+            handleLoading={this.handleLoading}
+            handleIsAdmin={this.handleIsAdmin}
+            getFunction={this.getFunction}
+            headerFunc={this.props.headerFunc}
+            Login={this.state.Login}
+            handleContentLogin={this.handleContentLogin}
+            handleInfoLogin={this.handleInfoLogin}
+          />
+        );
 
       default:
         break;
@@ -91,7 +115,7 @@ export default class Main extends Component {
       <MainContainer>
         {this.showContent(this.props.content)}
         {this.state.isAdmin && (
-          <Admin globalProps={this.state.globalProps}func={this.state.func} />
+          <Admin globalProps={this.state.globalProps} func={this.state.func} />
         )}
       </MainContainer>
     );

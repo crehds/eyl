@@ -8,8 +8,8 @@ export default class Profile extends Component {
   render() {
     return (
       <div className="profile">
-        <ProfileHead />
-        <ProfileBody />
+        <ProfileHead userRegistered={this.props.userRegistered} />
+        <ProfileBody userRegistered={this.props.userRegistered}/>
       </div>
     );
   }
